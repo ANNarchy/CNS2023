@@ -1,0 +1,15 @@
+---
+title: "CNS 2023 : Simulation of spiking and BOLD signals using the ANNarchy simulator"
+
+authors:
+    - Julien Vitay
+    - Helge Ülo Dinkelbach
+    - Fred Hamker
+
+---
+
+ANNarchy (Artificial Neural Networks architect) is a neuro-simulator for rate-coded and spiking neural networks in Python. 
+
+The source code is available at <https://github.com/ANNarchy/ANNarchy>, while the full documentation is at: <https://annarchy.github.io>.
+
+![](img/annarchy-color.png){width=80%}

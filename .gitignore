@@ -1,0 +1,5 @@
+*DS_Store
+*.pyc
+src/notebooks/annarchy
+refs
+src/.quarto
