@@ -1,7 +1,4 @@
----
-title: ANNarchy (Artificial Neural Networks architect)
----
-
+# ANNarchy
 
 ##  Resources
 

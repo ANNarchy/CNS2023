@@ -29,6 +29,8 @@ website:
         - 1-Rationale.qmd
         - 2-ANNarchy.qmd
         - 3-Neurons.qmd
+        - 4-Networks.qmd
+        - 5-Plasticity.qmd
       - section: "**Notebooks**"
         contents:
         - notebooks/RateCoded.ipynb

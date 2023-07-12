@@ -1,0 +1,149 @@
+# Networks
+
+
+![](img/annarchy-color.png){width=60%}
+
+## Projections
+
+Projections connect two populations (or views) in a uni-directional way.
+
+```python
+proj_exc = Projection(E, pop, 'exc')
+proj_inh = Projection(I, pop, 'inh')
+```
+
+Each target (`'exc', 'inh', 'AMPA', 'NMDA', 'GABA'`) can be defined as needed and will be treated differently by the post-synaptic neurons.
+
+For **rate-coded networks**, the weighted sum of inputs for a specific target is accessed in the equations by `sum(target)`:
+
+```python
+    equations="""
+        tau * dx/dt + x = sum(exc) - sum(inh)
+
+        r = tanh(x)
+    """
+```
+
+For **spiking networks**, the corresponding conductance increased after each incoming spike is accessed by `g_target`:
+
+```python
+    equations="""
+        C * dv/dt = gL * (E_L - v) + g_exc * (E_e - v) + g_inh * (E_i - v)
+    """
+```
+
+### Connection methods
+
+Projections must be populated with a connectivity matrix (who is connected to who), a weight `w` and optionally a delay `d` (uniform or variable).
+
+Several patterns are predefined:
+
+```python
+proj.connect_all_to_all(weights=Normal(0.0, 1.0), delays=2.0, allow_self_connections=False)
+
+proj.connect_one_to_one(weights=1.0, delays=Uniform(1.0, 10.0))
+
+proj.connect_fixed_number_pre(number=20, weights=1.0)
+
+proj.connect_fixed_number_post(number=20, weights=1.0)
+
+proj.connect_fixed_probability(probability=0.2, weights=1.0)
+
+proj.connect_gaussian(amp=1.0, sigma=0.2, limit=0.001)
+
+proj.connect_dog(amp_pos=1.0, sigma_pos=0.2, amp_neg=0.3, sigma_neg=0.7, limit=0.001)
+```
+
+![](img/connectivity.png){width=70%}
+
+But you can also load Numpy arrays or Scipy sparse matrices. Example for synfire chains:
+
+```python
+w = np.array([[None]*pre.size]*post.size)
+
+for i in range(post.size):
+    w[i, (i-1)%pre.size] = 1.0
+
+proj.connect_from_matrix(w)
+```
+
+Sparse variant:
+
+```python
+w = lil_matrix((pre.size, post.size))
+
+for i in range(pre.size):
+    w[pre.size, (i+1)%post.size] = 1.0
+
+proj.connect_from_sparse(w)
+```
+
+
+## Conductances / currents
+
+A pre-synaptic spike arriving to a spiking neuron increases the conductance/current `g_target` (e.g. `g_exc` or `g_inh`, depending on the projection).
+
+```python
+LIF = Neuron(
+    parameters = "...",
+    equations = """
+        C * dv/dt = gL * (E_L - v) + g_exc * (E_e - v): init=E_L    
+    """,
+    spike = "v >= v_T",
+    reset = "v = v_r",
+    refractory = 2.0
+)
+```
+
+By default (**instantaneous transmission**), each incoming spike increments instantaneously `g_target` from the synaptic efficiency `w` of the corresponding synapse.
+
+$$
+    g(t) = \sum_{t_pre} w \times \delta(t - t_\text{pre})
+$$
+
+![](img/synaptictransmission.png)
+
+For **exponentially-decreasing** or **alpha-shaped** synapses, ODEs have to be additionally introduced for the dynamics of the conductance/current when the neuron does not receive a spike.
+
+$$
+    \tau_\text{exc} \, \dfrac{d g(t)}{dt} + g(t) = 0 
+$$
+
+$$
+    \tau_\text{exc} \, \dfrac{d \alpha(t)}{dt} + \alpha(t) = g(t)
+$$
+
+The exponential numerical method should be preferred for these first-order linear ODEs, as integration is then exact.
+
+```python
+LIF = Neuron(
+    parameters = "...",
+    equations = """
+        C * dv/dt = gL * (E_L - v) + g_exc * (E_e - v) : init=E_L   
+
+        tau_exc * dg_exc/dt = - g_exc : exponential
+        tau_exc * dalpha/dt = g_exc - alpha : exponential
+    """,
+    spike = "v >= v_T",
+    reset = "v = v_r",
+    refractory = 2.0
+)
+```
+
+
+::: {.callout-tip}
+## Notebook: Synaptic transmission
+
+Download the Jupyter notebook: [SynapticTransmission.ipynb](https://raw.githubusercontent.com/ANNarchy/CNS2023/master/src/notebooks/SynapticTransmission.ipynb){target="_blank"} or run it directly on [colab.](https://colab.research.google.com/github/ANNarchy/CNS2023/blob/master/src/notebooks/SynapticTransmission.ipynb){target="_blank"}
+
+:::
+
+
+::: {.callout-tip}
+## Notebook: COBA - Conductance-based E/I network
+
+Download the Jupyter notebook: [COBA.ipynb](https://raw.githubusercontent.com/ANNarchy/CNS2023/master/src/notebooks/COBA.ipynb){target="_blank"} or run it directly on  [colab.](https://colab.research.google.com/github/ANNarchy/CNS2023/blob/master/src/notebooks/COBA.ipynb){target="_blank"}
+
+:::
+
+

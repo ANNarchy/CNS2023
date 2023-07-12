@@ -1,0 +1,92 @@
+# Synapse models
+
+More complex synaptic behaviors (short-term plasticity, long-term plasticity, etc) can be defined in a **synapse model**.
+
+![](img/annarchy-color.png){width=60%}
+
+
+## Short-term plasticity (STP)
+
+Spiking synapses can define a `pre_spike` field, defining what happens when a pre-synaptic spike arrives at the synapse.
+
+`g_target` is an alias for the corresponding post-synaptic conductance: it will be replaced by `g_exc` or `g_inh` depending on how the synapse is used.
+
+By default, a pre-synaptic spike increments the post-synaptic conductance from `w`: `g_target += w`
+
+```python
+DefaultSynapse = Synapse(
+    pre_spike="""
+        g_target += w 
+    """
+)
+
+proj = Projection(pop, pop, 'exc', DefaultSynapse)
+```
+
+A Synapse object can also have parameters and variables that are updated at each time step of the simulation (expensive) or when needed (event-driven).
+
+The following synapse model implements **short-term plasticity (STP)** (Tsodyks, Uziel and Markram, 2000) allowing to model activity-dependent synaptic transmission.
+
+```python
+STP = Synapse(
+    parameters = """
+        w=0.0
+        tau_rec = 1.0
+        tau_facil = 1.0
+        U = 0.1
+    """,
+    equations = """
+        dx/dt = (1 - x) / tau_rec : init = 1.0, event-driven
+        du/dt = (U - u) / tau_facil : init = 0.1, event-driven   
+    """,
+    pre_spike="""
+        g_target += w * u * x
+        x *= (1 - u)
+        u += U * (1 - u)
+    """
+)
+```
+
+::: {.callout-tip}
+## Notebook: STP
+
+Download the Jupyter notebook: [STP.ipynb](https://raw.githubusercontent.com/ANNarchy/tutorial/master/src/notebooks/STP.ipynb){target="_blank"}
+
+Run it directly on colab: [STP.ipynb](https://colab.research.google.com/github/ANNarchy/tutorial/blob/master/src/notebooks/STP.ipynb){target="_blank"}
+
+:::
+
+## Spike-Timing Dependent plasticity (STDP)
+
+`post_spike` similarly defines what happens when a post-synaptic spike is emitted. This can be used to implement the event-driven version of STDP using traces.
+
+```python
+STDP = Synapse(
+    parameters = """
+        tau_plus = 20.0 : projection ; tau_minus = 20.0 : projection
+        A_plus = 0.01 : projection   ; A_minus = 0.01 : projection
+        w_min = 0.0 : projection     ; w_max = 1.0 : projection
+    """,
+    equations = """
+        tau_plus  * dx/dt = -x : event-driven # pre-synaptic trace
+        tau_minus * dy/dt = -y : event-driven # post-synaptic trace
+    """,
+    pre_spike="""
+        g_target += w
+        x += A_plus * w_max
+        w = clip(w + y, w_min , w_max)
+    """,
+    post_spike="""
+        y -= A_minus * w_max
+        w = clip(w + x, w_min , w_max)
+    """)
+```
+
+::: {.callout-tip}
+## Notebook: STDP
+
+Download the Jupyter notebook: [STDP.ipynb](https://raw.githubusercontent.com/ANNarchy/tutorial/master/src/notebooks/STDP.ipynb){target="_blank"}
+
+Run it directly on colab: [STDP.ipynb](https://colab.research.google.com/github/ANNarchy/tutorial/blob/master/src/notebooks/STDP.ipynb){target="_blank"}
+
+:::
