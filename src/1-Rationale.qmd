@@ -1,0 +1,64 @@
+---
+title: Why ANNarchy?
+---
+
+
+## Neuro-simulators
+
+There already exist several neuro-simulators for computational neuroscience, each focusing on different levels of description (multi-compartmental, spiking, rate-coded, etc.) or supported hardware (CPU, GPU). 
+
+Some simulators provide fixed libraries of neural and synaptic models:
+
+* **NEURON** <https://neuron.yale.edu/neuron/>
+    * Multi-compartmental models, spiking neurons (CPU)
+* **GENESIS** <http://genesis-sim.org/>
+    * Multi-compartmental models, spiking neurons (CPU) 
+* **NEST** <https://nest-initiative.org/>
+    * Spiking neurons (CPU)
+* **GeNN** <https://genn-team.github.io/genn/>
+    * Spiking neurons (GPU)
+* **Auryn** <https://fzenke.net/auryn/doku.php>
+    * Spiking neurons (CPU)
+
+Some, such as ANNarchy,  rely instead on code generation, allowing virtual any model to be implemented:
+
+* **Brian** <https://briansimulator.org/>
+    * Spiking neurons (CPU)
+* **Brian2CUDA** <https://github.com/brian-team/brian2cuda>
+    * Spiking neurons (GPU)
+* **ANNarchy** <https://github.com/ANNarchy/ANNarchy>
+    * Rate-coded and spiking neurons (CPU, GPU)
+
+
+## Key features of ANNarchy
+
+* Simulation of both **rate-coded** and **spiking** neural networks.
+
+* Only local biologically realistic mechanisms are possible (no backpropagation).
+
+* **Equation-oriented** description of neural/synaptic dynamics (à la Brian).
+
+* **Code generation** in C++, parallelized using OpenMP on CPU and CUDA on GPU (MPI is coming).
+
+* Synaptic, intrinsic and structural plasticity mechanisms.
+
+* **BOLD monitoring** from spiking neural networks.
+
+@Maith2022\
+**BOLD Monitoring in the Neural Simulator ANNarchy.**\
+*Frontiers in Neuroinformatics* 16. [doi:10.3389/fninf.2022.790966](https://www.frontiersin.org/article/10.3389/fninf.2022.790966)
+
+@Maith2020\
+**A computational model-based analysis of basal ganglia pathway changes in Parkinson’s disease inferred from resting-state fMRI.**\
+*European Journal of Neuroscience*. [doi:10.1111/ejn.14868](https://doi.org/10.1111/ejn.14868)
+
+
+## Parallel performance
+
+Most importantly, ANNarchy is fast on multicore systems and GPUs. Depending on the model, it is comparable to Brian2 and faster than NEST on standard consumer PCs.
+
+![COBA Benchmark with 4000 neurons using an AMD Ryzen7 2700X / NVIDIA RTX 2060. See @Dinkelbach2019.](img/coba_4k_times.png){width=60%}
+
+![COBA Benchmark with varying neurons using an AMD Ryzen7 2700X / NVIDIA RTX 2060. See @Dinkelbach2019.](img/coba_strong_scaling_speedups.png){width=100%}
+
+![COBA Benchmark with varying neurons using an AMD Ryzen7 2700X / NVIDIA RTX 2060. See @Dinkelbach2019.](img/coba_strong_scaling_times.png){width=100%}

@@ -10,48 +10,38 @@ website:
   navbar:
     background: black
     logo: img/logowhite.png
-    pinned: true
+    pinned: false
+
     right:
-      - text: "Slides"
-        file: slides/presentation.html
-      - text: "Notebooks"
-        href: https://github.com/ANNarchy/tutorial/tree/master/src/notebooks
       - icon: github
-        href: https://github.com/ANNarchy/ANNarchy
+        href: https://github.com/ANNarchy/CNS2023
         aria-label: GitHub
 
   sidebar:
     style: "docked"
-    logo: img/tuc-new.png
-    search: true
+    logo: img/qrcode.png
+
     contents:
-      - text: "About"
+      - text: annarchy.github.io/CNS2023
         file: index.qmd
       - section: "**Tutorial**"
         contents:
-        - ANNarchy.qmd
-        - RateCoded.qmd
-        - Spiking.qmd
+        - 1-Rationale.qmd
+        - 2-ANNarchy.qmd
+        - 3-Neurons.qmd
       - section: "**Notebooks**"
         contents:
-          - notebooks/RC.ipynb
-          - notebooks/BCM.ipynb
-          - notebooks/Miconi.ipynb
-          - notebooks/AdEx.ipynb
-          - notebooks/SynapticTransmission.ipynb
-          - notebooks/COBA.ipynb
-          - notebooks/STP.ipynb
-          - notebooks/STDP.ipynb
-          - notebooks/BoldMonitoring.ipynb
+        - notebooks/RateCoded.ipynb
+        - notebooks/AdEx.ipynb
 
   page-footer:
     center: |
-      Copyright 2022 - Julien Vitay <julien.vitay@informatik.tu-chemnitz.de> - Chemnitz University of Technology
+      <https://annarchy.github.io/CNS2023>
 
 format:
   html:
     theme: [sandstone, ../assets/webpage.scss]
-    toc: true
+    toc: false
     page-layout: full
     smooth-scroll: true
     html-math-method: katex

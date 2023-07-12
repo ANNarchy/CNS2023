@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CNS 2023: Simulation of spiking and BOLD signals using the ANNarchy simulator - ANNarchy (Artificial Neural Networks architect)</title>
+<title>CNS 2023: Simulation of spiking and BOLD signals using the ANNarchy simulator - Why ANNarchy?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -83,8 +49,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Neurons.html" rel="next">
-<link href="./Rationale.html" rel="prev">
+<link href="./2-ANNarchy.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -154,7 +120,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Rationale.html"><strong>Tutorial</strong></a></li><li class="breadcrumb-item"><a href="./ANNarchy.html">ANNarchy (Artificial Neural Networks architect)</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1-Rationale.html"><strong>Tutorial</strong></a></li><li class="breadcrumb-item"><a href="./1-Rationale.html">Why ANNarchy?</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -188,32 +154,43 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Rationale.html" class="sidebar-item-text sidebar-link">
+  <a href="./1-Rationale.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Why ANNarchy?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ANNarchy.html" class="sidebar-item-text sidebar-link active">
+  <a href="./2-ANNarchy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">ANNarchy (Artificial Neural Networks architect)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Neurons.html" class="sidebar-item-text sidebar-link">
+  <a href="./3-Neurons.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Neuron models</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Notebooks</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./RateCoded.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Rate-coded networks</span></a>
+  <a href="./notebooks/RateCoded.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rate-coded neuron</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Spiking.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Spiking networks</span></a>
+  <a href="./notebooks/AdEx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Adaptive Exponential IF neuron</span></a>
   </div>
 </li>
       </ul>
@@ -229,7 +206,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ANNarchy (Artificial Neural Networks architect)</h1>
+<h1 class="title">Why ANNarchy?</h1>
 </div>
 
 
@@ -244,83 +221,100 @@ div.csl-indent {
 
 </header>
 
-<section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<p>White paper:</p>
-<p><span class="citation" data-cites="Vitay2015">Vitay et al. (<a href="#ref-Vitay2015" role="doc-biblioref">2015</a>)</span><br>
-<strong>ANNarchy: a code generation approach to neural simulations on parallel hardware.</strong><br>
-<em>Frontiers in Neuroinformatics</em> 9. <a href="https://doi.org/10.3389/fninf.2015.00019">doi:10.3389/fninf.2015.00019</a></p>
-<p>Source code:</p>
-<p><a href="https://github.com/ANNarchy/ANNarchy" class="uri">https://github.com/ANNarchy/ANNarchy</a></p>
-<p>Documentation:</p>
-<p><a href="https://annarchy.github.io" class="uri">https://annarchy.github.io</a></p>
-<p>Forum:</p>
-<p><a href="https://groups.google.com/forum/#!forum/annarchy" class="uri">https://groups.google.com/forum/#!forum/annarchy</a></p>
-</section>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p>Installation guide: <a href="https://annarchy.github.io/Installation/" class="uri">https://annarchy.github.io/Installation/</a></p>
-<p>Using pip:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ANNarchy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>From source:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/ANNarchy/ANNarchy.git</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> annarchy</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Requirements (Linux and MacOS):</p>
+<section id="neuro-simulators" class="level2">
+<h2 class="anchored" data-anchor-id="neuro-simulators">Neuro-simulators</h2>
+<p>There already exist several neuro-simulators for computational neuroscience, each focusing on different levels of description (multi-compartmental, spiking, rate-coded, etc.) or supported hardware (CPU, GPU).</p>
+<p>Some simulators provide fixed libraries of neural and synaptic models:</p>
 <ul>
-<li>g++/clang++</li>
-<li>python &gt;= 3.6</li>
-<li>numpy</li>
-<li>sympy</li>
-<li>cython</li>
+<li><strong>NEURON</strong> <a href="https://neuron.yale.edu/neuron/" class="uri">https://neuron.yale.edu/neuron/</a>
+<ul>
+<li>Multi-compartmental models, spiking neurons (CPU)</li>
+</ul></li>
+<li><strong>GENESIS</strong> <a href="http://genesis-sim.org/" class="uri">http://genesis-sim.org/</a>
+<ul>
+<li>Multi-compartmental models, spiking neurons (CPU)</li>
+</ul></li>
+<li><strong>NEST</strong> <a href="https://nest-initiative.org/" class="uri">https://nest-initiative.org/</a>
+<ul>
+<li>Spiking neurons (CPU)</li>
+</ul></li>
+<li><strong>GeNN</strong> <a href="https://genn-team.github.io/genn/" class="uri">https://genn-team.github.io/genn/</a>
+<ul>
+<li>Spiking neurons (GPU)</li>
+</ul></li>
+<li><strong>Auryn</strong> <a href="https://fzenke.net/auryn/doku.php" class="uri">https://fzenke.net/auryn/doku.php</a>
+<ul>
+<li>Spiking neurons (CPU)</li>
+</ul></li>
+</ul>
+<p>Some, such as ANNarchy, rely instead on code generation, allowing virtual any model to be implemented:</p>
+<ul>
+<li><strong>Brian</strong> <a href="https://briansimulator.org/" class="uri">https://briansimulator.org/</a>
+<ul>
+<li>Spiking neurons (CPU)</li>
+</ul></li>
+<li><strong>Brian2CUDA</strong> <a href="https://github.com/brian-team/brian2cuda" class="uri">https://github.com/brian-team/brian2cuda</a>
+<ul>
+<li>Spiking neurons (GPU)</li>
+</ul></li>
+<li><strong>ANNarchy</strong> <a href="https://github.com/ANNarchy/ANNarchy" class="uri">https://github.com/ANNarchy/ANNarchy</a>
+<ul>
+<li>Rate-coded and spiking neurons (CPU, GPU)</li>
+</ul></li>
 </ul>
 </section>
-<section id="structure-of-a-script" class="level2">
-<h2 class="anchored" data-anchor-id="structure-of-a-script">Structure of a script</h2>
-<p>A neuro-computational model in ANNarchy is composed of:</p>
-<ol type="1">
-<li>Several <strong>populations</strong> implementing different <strong>neuron</strong> models.</li>
-<li>Several <strong>projections</strong> between the populations, that can implement specific <strong>synapse</strong> models.</li>
-<li><strong>Monitors</strong> to record what is happening during a simulation.</li>
-</ol>
+<section id="key-features-of-annarchy" class="level2">
+<h2 class="anchored" data-anchor-id="key-features-of-annarchy">Key features of ANNarchy</h2>
+<ul>
+<li><p>Simulation of both <strong>rate-coded</strong> and <strong>spiking</strong> neural networks.</p></li>
+<li><p>Only local biologically realistic mechanisms are possible (no backpropagation).</p></li>
+<li><p><strong>Equation-oriented</strong> description of neural/synaptic dynamics (à la Brian).</p></li>
+<li><p><strong>Code generation</strong> in C++, parallelized using OpenMP on CPU and CUDA on GPU (MPI is coming).</p></li>
+<li><p>Synaptic, intrinsic and structural plasticity mechanisms.</p></li>
+<li><p><strong>BOLD monitoring</strong> from spiking neural networks.</p></li>
+</ul>
+<p><span class="citation" data-cites="Maith2022">Maith et al. (<a href="#ref-Maith2022" role="doc-biblioref">2022</a>)</span><br>
+<strong>BOLD Monitoring in the Neural Simulator ANNarchy.</strong><br>
+<em>Frontiers in Neuroinformatics</em> 16. <a href="https://www.frontiersin.org/article/10.3389/fninf.2022.790966">doi:10.3389/fninf.2022.790966</a></p>
+<p><span class="citation" data-cites="Maith2020">Maith et al. (<a href="#ref-Maith2020" role="doc-biblioref">2020</a>)</span><br>
+<strong>A computational model-based analysis of basal ganglia pathway changes in Parkinson’s disease inferred from resting-state fMRI.</strong><br>
+<em>European Journal of Neuroscience</em>. <a href="https://doi.org/10.1111/ejn.14868">doi:10.1111/ejn.14868</a></p>
+</section>
+<section id="parallel-performance" class="level2">
+<h2 class="anchored" data-anchor-id="parallel-performance">Parallel performance</h2>
+<p>Most importantly, ANNarchy is fast on multicore systems and GPUs. Depending on the model, it is comparable to Brian2 and faster than NEST on standard consumer PCs.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/annarchy-color.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="img/coba_4k_times.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption class="figure-caption">COBA Benchmark with 4000 neurons using an AMD Ryzen7 2700X / NVIDIA RTX 2060. See <span class="citation" data-cites="Dinkelbach2019">Dinkelbach et al. (<a href="#ref-Dinkelbach2019" role="doc-biblioref">2019</a>)</span>.</figcaption>
 </figure>
 </div>
-<p>The following script provides the basic structure of a model. First, the neuron and synapse models have to be defined using the equation-oriented interface. Populations are then created and connected with each other using projections. The network can then be generated and compiled, before the simulation can start.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ANNarchy <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create neuron types</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>neuron <span class="op">=</span> Neuron(...) </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create synapse types for transmission and/or plasticity</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>stdp <span class="op">=</span> Synapse(...) </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create populations of neurons</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>pop <span class="op">=</span> Population(<span class="dv">1000</span>, neuron) </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect the populations through projections</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>proj <span class="op">=</span> Projection(pop, pop, <span class="st">'exc'</span>, stdp) </span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>proj.connect_fixed_probability(weights<span class="op">=</span>Uniform(<span class="fl">0.0</span>, <span class="fl">1.0</span>), probability<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate and compile the code</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="bu">compile</span>() </span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Record spiking activity</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> Monitor(pop, [<span class="st">'spike'</span>]) </span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate for 1 second</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>simulate(<span class="fl">1000.</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The rest of this tutorial explains step by step how to implement those different mechanisms.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/coba_strong_scaling_speedups.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">COBA Benchmark with varying neurons using an AMD Ryzen7 2700X / NVIDIA RTX 2060. See <span class="citation" data-cites="Dinkelbach2019">Dinkelbach et al. (<a href="#ref-Dinkelbach2019" role="doc-biblioref">2019</a>)</span>.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/coba_strong_scaling_times.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">COBA Benchmark with varying neurons using an AMD Ryzen7 2700X / NVIDIA RTX 2060. See <span class="citation" data-cites="Dinkelbach2019">Dinkelbach et al. (<a href="#ref-Dinkelbach2019" role="doc-biblioref">2019</a>)</span>.</figcaption>
+</figure>
+</div>
 
 
 
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-Vitay2015" class="csl-entry" role="listitem">
-Vitay, J., Dinkelbach, H. Ü., and Hamker, F. H. (2015). <span>ANNarchy</span>: A code generation approach to neural simulations on parallel hardware. <em>Frontiers in Neuroinformatics</em> 9. doi:<a href="https://doi.org/10.3389/fninf.2015.00019">10.3389/fninf.2015.00019</a>.
+<div id="ref-Dinkelbach2019" class="csl-entry" role="listitem">
+Dinkelbach, H. Ü., Vitay, J., and Hamker, F. H. (2019). Scalable simulation of rate-coded and spiking neural networks on shared memory systems. in <em>2019 <span>Conference</span> on <span>Cognitive Computational Neuroscience</span></em> (<span>Berlin, Germany</span>: <span>Cognitive Computational Neuroscience</span>). doi:<a href="https://doi.org/10.32470/CCN.2019.1109-0">10.32470/CCN.2019.1109-0</a>.
+</div>
+<div id="ref-Maith2022" class="csl-entry" role="listitem">
+Maith, O., Dinkelbach, H. Ü., Baladron, J., Vitay, J., and Hamker, F. H. (2022). <span>BOLD Monitoring</span> in the <span>Neural Simulator ANNarchy</span>. <em>Frontiers in Neuroinformatics</em> 16.
+</div>
+<div id="ref-Maith2020" class="csl-entry" role="listitem">
+Maith, O., Escudero, F. V., Dinkelbach, H. Ü., Baladron, J., Horn, A., Irmen, F., et al. (2020). A computational model-based analysis of basal ganglia pathway changes in <span>Parkinson</span>’s disease inferred from resting-state <span class="nocase">fMRI</span>. <em>European Journal of Neuroscience</em> n/a. doi:<a href="https://doi.org/10.1111/ejn.14868">10.1111/ejn.14868</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -558,13 +552,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="./Rationale.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Why ANNarchy?</span>
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">annarchy.github.io/CNS2023</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Neurons.html" class="pagination-link">
-        <span class="nav-page-text">Neuron models</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./2-ANNarchy.html" class="pagination-link">
+        <span class="nav-page-text">ANNarchy (Artificial Neural Networks architect)</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

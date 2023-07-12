@@ -1,40 +1,9 @@
 ---
-title: ANNarchy
+title: ANNarchy (Artificial Neural Networks architect)
 ---
 
 
-## Neuro-simulators
-
-There already exist several neuro-simulators for computational neuroscience, each focusing on different levels of description (multi-compartmental, spiking, rate-coded, etc.) or supported hardware (CPU, GPU). 
-
-
-Some simulators provide fixed libraries of neural and synaptic models:
-
-* **NEURON** <https://neuron.yale.edu/neuron/>
-    * Multi-compartmental models, spiking neurons (CPU)
-* **GENESIS** <http://genesis-sim.org/>
-    * Multi-compartmental models, spiking neurons (CPU) 
-* **NEST** <https://nest-initiative.org/>
-    * Spiking neurons (CPU)
-* **GeNN** <https://genn-team.github.io/genn/>
-    * Spiking neurons (GPU)
-* **Auryn** <https://fzenke.net/auryn/doku.php>
-    * Spiking neurons (CPU)
-
-
-Some, such as ANNarchy,  rely instead on code generation, allowing virtual any model to be implemented:
-
-* **Brian** <https://briansimulator.org/>
-    * Spiking neurons (CPU)
-* **Brian2CUDA** <https://github.com/brian-team/brian2cuda>
-    * Spiking neurons (GPU)
-* **ANNarchy** <https://github.com/ANNarchy/ANNarchy>
-    * Rate-coded and spiking neurons (CPU, GPU)
-
-
-## ANNarchy (Artificial Neural Networks architect)
-
-### Resources
+##  Resources
 
 White paper:
 
@@ -56,7 +25,7 @@ Forum:
 <https://groups.google.com/forum/#!forum/annarchy>
 
 
-### Installation
+## Installation
 
 Installation guide: <https://annarchy.github.io/Installation/>
 
@@ -79,23 +48,18 @@ Requirements (Linux and MacOS):
 * g++/clang++
 * python >= 3.6
 * numpy
-* sympy
 * cython
+* sympy
 
 
-### Features
+ANNarchy also works out-of-the-box on [colab.research.google.com](https://colab.research.google.com), you just need to pip install it at the beginning of the notebook:
 
-* Simulation of both **rate-coded** and **spiking** neural networks.
+```bash
+!pip install ANNarchy
+```
 
-* Only local biologically realistic mechanisms are possible (no backpropagation).
 
-* **Equation-oriented** description of neural/synaptic dynamics (à la Brian).
-
-* **Code generation** in C++, parallelized using OpenMP on CPU and CUDA on GPU (MPI is coming).
-
-* Synaptic, intrinsic and structural plasticity mechanisms.
-
-### Structure of a script
+## Structure of a script
 
 A neuro-computational model in ANNarchy is composed of:
 
@@ -133,4 +97,4 @@ m = Monitor(pop, ['spike'])
 simulate(1000.)
 ```
 
-The rest of this tutorial explains step by step how to implement those different mechanisms, starting with rate-coded networks, followed by spiking networks.
+The rest of this tutorial explains step by step how to implement those different mechanisms.

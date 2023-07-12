@@ -58,13 +58,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../notebooks/STDP.html" rel="next">
-<link href="../notebooks/COBA.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -118,16 +117,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/presentation.html" rel="" target="">
- <span class="menu-text">Slides</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://github.com/ANNarchy/tutorial/tree/master/src/notebooks" rel="" target="">
- <span class="menu-text">Notebooks</span></a>
-  </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ANNarchy/ANNarchy" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/ANNarchy/CNS2023" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -142,12 +133,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/RC.html"><strong>Notebooks</strong></a></li><li class="breadcrumb-item"><a href="../notebooks/STP.html">Short-term Plasticity</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Short-term Plasticity</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
@@ -157,20 +145,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../img/tuc-new.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../img/qrcode.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
+ <span class="menu-text">annarchy.github.io/CNS2023</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -184,20 +167,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ANNarchy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ANNarchy</span></a>
+  <a href="../1-Rationale.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Why ANNarchy?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../RateCoded.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Rate-coded networks</span></a>
+  <a href="../2-ANNarchy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ANNarchy (Artificial Neural Networks architect)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Spiking.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Spiking networks</span></a>
+  <a href="../3-Neurons.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neuron models</span></a>
   </div>
 </li>
       </ul>
@@ -213,56 +196,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/RC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Echo state networks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/BCM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">BCM learning rule</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/Miconi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Miconi network</span></a>
+  <a href="../notebooks/RateCoded.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rate-coded neuron</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/AdEx.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Adaptive Exponential IF neuron</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/SynapticTransmission.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Synaptic transmission</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/COBA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">COBA network</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/STP.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Short-term Plasticity</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/STDP.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">STDP</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/BoldMonitoring.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Recording BOLD signals</span></a>
   </div>
 </li>
       </ul>
@@ -272,9 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content">
 
@@ -703,25 +642,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation column-page-right">
-  <div class="nav-page nav-page-previous">
-      <a href="../notebooks/COBA.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">COBA network</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../notebooks/STDP.html" class="pagination-link">
-        <span class="nav-page-text">STDP</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center">Copyright 2022 - Julien Vitay <a href="mailto:julien.vitay@informatik.tu-chemnitz.de" class="email">julien.vitay@informatik.tu-chemnitz.de</a> - Chemnitz University of Technology</div>
+    <div class="nav-footer-center"><a href="https://annarchy.github.io/CNS2023" class="uri">https://annarchy.github.io/CNS2023</a></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

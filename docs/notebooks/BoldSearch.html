@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
@@ -116,16 +117,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/presentation.html" rel="" target="">
- <span class="menu-text">Slides</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://github.com/ANNarchy/tutorial/tree/master/src/notebooks" rel="" target="">
- <span class="menu-text">Notebooks</span></a>
-  </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ANNarchy/ANNarchy" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/ANNarchy/CNS2023" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -143,9 +136,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
@@ -155,20 +145,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../img/tuc-new.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../img/qrcode.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
+ <span class="menu-text">annarchy.github.io/CNS2023</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -182,20 +167,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ANNarchy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ANNarchy</span></a>
+  <a href="../1-Rationale.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Why ANNarchy?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../RateCoded.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Rate-coded networks</span></a>
+  <a href="../2-ANNarchy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ANNarchy (Artificial Neural Networks architect)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Spiking.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Spiking networks</span></a>
+  <a href="../3-Neurons.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neuron models</span></a>
   </div>
 </li>
       </ul>
@@ -211,56 +196,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/RC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Echo state networks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/BCM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">BCM learning rule</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/Miconi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Miconi network</span></a>
+  <a href="../notebooks/RateCoded.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rate-coded neuron</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/AdEx.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Adaptive Exponential IF neuron</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/SynapticTransmission.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Synaptic transmission</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/COBA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">COBA network</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/STP.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Short-term Plasticity</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/STDP.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">STDP</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/BoldMonitoring.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Recording BOLD signals</span></a>
   </div>
 </li>
       </ul>
@@ -270,9 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content">
 
@@ -290,133 +231,171 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trial(args):</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_network():</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    noise <span class="op">=</span> args[<span class="st">'noise'</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    clear()</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    clear()</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    pop0 <span class="op">=</span> Population(<span class="dv">100</span>, neuron<span class="op">=</span>Izhikevich)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    pop1 <span class="op">=</span> Population(<span class="dv">100</span>, neuron<span class="op">=</span>Izhikevich)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set noise to create some baseline activity</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    pop0.noise <span class="op">=</span> <span class="fl">5.0</span><span class="op">;</span> pop1.noise <span class="op">=</span> <span class="fl">5.0</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute mean firing rate in Hz on 100ms window</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    pop0.compute_firing_rate(window<span class="op">=</span><span class="fl">100.0</span>)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    pop1.compute_firing_rate(window<span class="op">=</span><span class="fl">100.0</span>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Record the mean firing rate</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    mon_pop0 <span class="op">=</span> Monitor(pop0, [<span class="st">"r"</span>])</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    mon_pop1 <span class="op">=</span> Monitor(pop1, [<span class="st">"r"</span>])</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    m_bold <span class="op">=</span> BoldMonitor(</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        populations <span class="op">=</span> [pop0, pop1], <span class="co"># recorded populations</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        bold_model <span class="op">=</span> balloon_RN(), <span class="co"># BOLD model to use (default is balloon_RN)</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        mapping <span class="op">=</span> {<span class="st">'I_CBF'</span>: <span class="st">'r'</span>}, <span class="co"># mapping from pop.r to I_CBF</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        normalize_input <span class="op">=</span> <span class="dv">2000</span>,  <span class="co"># time window to compute baseline.</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        recorded_variables <span class="op">=</span> [<span class="st">"I_CBF"</span>, <span class="st">"BOLD"</span>]  <span class="co"># variables to be recorded</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="bu">compile</span>()</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    m_bold.start()</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We manipulate the noise for the half of the neurons</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    simulate(<span class="dv">5000</span>)      <span class="co"># 5s with low noise</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    pop0.noise <span class="op">=</span> noise</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    simulate(<span class="dv">5000</span>)      <span class="co"># 5s with higher noise (one population)</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    pop0.noise <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    simulate(<span class="dv">20000</span>)     <span class="co"># 10s with low noise</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Retrieve the recordings</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    mean_fr1 <span class="op">=</span> np.mean(mon_pop0.get(<span class="st">"r"</span>), axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    mean_fr2 <span class="op">=</span> np.mean(mon_pop1.get(<span class="st">"r"</span>), axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    input_data <span class="op">=</span> m_bold.get(<span class="st">"I_CBF"</span>)</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    bold_data <span class="op">=</span> m_bold.get(<span class="st">"BOLD"</span>)</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute the loss</span></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>    max_bold <span class="op">=</span> bold_data.<span class="bu">max</span>()</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> (max_bold <span class="op">-</span> <span class="fl">0.05</span>)<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>        <span class="st">'loss'</span>: loss,</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>        <span class="st">'status'</span>: STATUS_OK,</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>        <span class="co"># -- store other results like this</span></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>        <span class="st">'mean_fr1'</span>: mean_fr1,</span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>        <span class="st">'mean_fr2'</span>: mean_fr2,</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>        <span class="st">'input_data'</span>: input_data,</span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>        <span class="st">'bold_data'</span>: bold_data,</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>        }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    Izhikevich <span class="op">=</span> Neuron(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        parameters<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">            noise = 0.0</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">            a = 0.02</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">            b = 0.2</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">            c = -65.0</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">            d = 2.0 </span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">            v_thresh = 30.0</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">            current = 0.0</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">        """</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        equations<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="st">            I = g_exc - g_inh + noise * Normal(0.0, 1.0) + current</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="st">            dv/dt = 0.04 * v^2 + 5.0 * v + 140.0 - u + I </span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="st">            </span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="st">            du/dt = a * (b*v - u) </span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="st">        """</span>,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        spike <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="st">            v &gt;= v_thresh</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="st">        """</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        reset <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="st">            v = c</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="st">            u += d</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="st">        """</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    pop <span class="op">=</span> Population(geometry<span class="op">=</span><span class="dv">1000</span>, neuron<span class="op">=</span>Izhikevich)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    Exc <span class="op">=</span> pop[:<span class="dv">800</span>]</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    Inh <span class="op">=</span> pop[<span class="dv">800</span>:]</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute mean firing rate in Hz on 100ms window</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    pop.compute_firing_rate(window<span class="op">=</span><span class="fl">100.0</span>)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    re <span class="op">=</span> np.random.random(<span class="dv">800</span>)      <span class="op">;</span> ri <span class="op">=</span> np.random.random(<span class="dv">200</span>)</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    Exc.noise <span class="op">=</span> <span class="fl">5.0</span>                 <span class="op">;</span> Inh.noise <span class="op">=</span> <span class="fl">2.0</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    Exc.a <span class="op">=</span> <span class="fl">0.02</span>                    <span class="op">;</span> Inh.a <span class="op">=</span> <span class="fl">0.02</span> <span class="op">+</span> <span class="fl">0.08</span> <span class="op">*</span> ri</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    Exc.b <span class="op">=</span> <span class="fl">0.2</span>                     <span class="op">;</span> Inh.b <span class="op">=</span> <span class="fl">0.25</span> <span class="op">-</span> <span class="fl">0.05</span> <span class="op">*</span> ri</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    Exc.c <span class="op">=</span> <span class="op">-</span><span class="fl">65.0</span> <span class="op">+</span> <span class="fl">15.0</span> <span class="op">*</span> re<span class="op">**</span><span class="dv">2</span>    <span class="op">;</span> Inh.c <span class="op">=</span> <span class="op">-</span><span class="fl">65.0</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    Exc.d <span class="op">=</span> <span class="fl">8.0</span> <span class="op">-</span> <span class="fl">6.0</span> <span class="op">*</span> re<span class="op">**</span><span class="dv">2</span>       <span class="op">;</span> Inh.d <span class="op">=</span> <span class="fl">2.0</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    Exc.v <span class="op">=</span> <span class="op">-</span><span class="fl">65.0</span>                   <span class="op">;</span> Inh.v <span class="op">=</span> <span class="op">-</span><span class="fl">65.0</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    Exc.u <span class="op">=</span> Exc.v <span class="op">*</span> Exc.b           <span class="op">;</span> Inh.u <span class="op">=</span> Inh.v <span class="op">*</span> Inh.b</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    exc_proj <span class="op">=</span> Projection(pre<span class="op">=</span>Exc, post<span class="op">=</span>pop, target<span class="op">=</span><span class="st">'exc'</span>)</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    exc_proj.connect_all_to_all(weights<span class="op">=</span>Uniform(<span class="fl">0.0</span>, <span class="fl">0.5</span>))</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    inh_proj <span class="op">=</span> Projection(pre<span class="op">=</span>Inh, post<span class="op">=</span>pop, target<span class="op">=</span><span class="st">'inh'</span>)</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    inh_proj.connect_all_to_all(weights<span class="op">=</span>Uniform(<span class="fl">0.0</span>, <span class="fl">1.0</span>))</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> trial({<span class="st">'noise'</span>: <span class="fl">7.5</span>})</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">6</span>))</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> plt.GridSpec(<span class="dv">1</span>, <span class="dv">3</span>, left<span class="op">=</span><span class="fl">0.05</span>, right<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># mean firing rate</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> plt.subplot(grid[<span class="dv">0</span>, <span class="dv">0</span>])</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ax1.plot(data[<span class="st">'mean_fr1'</span>], label<span class="op">=</span><span class="st">"pop0"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ax1.plot(data[<span class="st">'mean_fr2'</span>], label<span class="op">=</span><span class="st">"pop1"</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Average mean firing rate [Hz]"</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># BOLD input signal</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> plt.subplot(grid[<span class="dv">0</span>, <span class="dv">1</span>])</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>ax2.plot(data[<span class="st">'input_data'</span>])</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"BOLD input I_CBF"</span>)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># BOLD output signal</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> plt.subplot(grid[<span class="dv">0</span>, <span class="dv">2</span>])</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>ax3.plot(data[<span class="st">'bold_data'</span>]<span class="op">*</span><span class="fl">100.0</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>ax3.set_ylabel(<span class="st">"BOLD [%]"</span>)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis labels as seconds</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> [ax1, ax2, ax3]:</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"time [ms]"</span>)</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_loss(data):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    max_bold <span class="op">=</span> data.<span class="bu">max</span>()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> (max_bold <span class="op">-</span> <span class="fl">0.05</span>)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> loss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trial(args):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    pop <span class="op">=</span> create_network()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    m_rate <span class="op">=</span> Monitor(pop, [<span class="st">"r"</span>])</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    m_bold <span class="op">=</span> BoldMonitor(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        populations <span class="op">=</span> pop, <span class="co"># recorded population</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        bold_model <span class="op">=</span> balloon_RN(), <span class="co"># BOLD model to use (default is balloon_RN)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        mapping <span class="op">=</span> {<span class="st">'I_CBF'</span>: <span class="st">'r'</span>}, <span class="co"># mapping from pop.r to I_CBF</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        normalize_input <span class="op">=</span> <span class="dv">2000</span>,  <span class="co"># time window to compute baseline.</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        recorded_variables <span class="op">=</span> [<span class="st">"I_CBF"</span>, <span class="st">"BOLD"</span>]  <span class="co"># variables to be recorded in the BOLD model</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">compile</span>()</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    m_bold.start()</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We manipulate the noise for the half of the neurons</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    simulate(<span class="dv">5000</span>)      <span class="co"># 5s with low noise</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    pop[:<span class="dv">800</span>].current <span class="op">=</span> args[<span class="dv">0</span>]</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    simulate(<span class="dv">500</span>)      <span class="co"># 500ms with higher noise (one population)</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    pop[:<span class="dv">800</span>].current <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    simulate(<span class="dv">20000</span>)     <span class="co"># 10s with low noise</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Retrieve the recordings</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    mean_fr <span class="op">=</span> np.mean(m_rate.get(<span class="st">"r"</span>), axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    input_data <span class="op">=</span> m_bold.get(<span class="st">"I_CBF"</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    bold_data <span class="op">=</span> m_bold.get(<span class="st">"BOLD"</span>)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute the loss</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> compute_loss(bold_data)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        <span class="st">'loss'</span>: loss,</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>        <span class="st">'status'</span>: STATUS_OK,</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>        <span class="co"># -- store other results like this</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>        <span class="st">'mean_fr'</span>: mean_fr,</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>        <span class="st">'input_data'</span>: input_data,</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>        <span class="st">'bold_data'</span>: bold_data,</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>        }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> trial([<span class="fl">1.0</span>])</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">6</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> plt.GridSpec(<span class="dv">1</span>, <span class="dv">3</span>, left<span class="op">=</span><span class="fl">0.05</span>, right<span class="op">=</span><span class="fl">0.95</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># mean firing rate</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> plt.subplot(grid[<span class="dv">0</span>, <span class="dv">0</span>])</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>ax1.plot(data[<span class="st">'mean_fr'</span>], label<span class="op">=</span><span class="st">"pop0"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Average mean firing rate [Hz]"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># BOLD input signal</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> plt.subplot(grid[<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>ax2.plot(data[<span class="st">'input_data'</span>])</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"BOLD input I_CBF"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># BOLD output signal</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> plt.subplot(grid[<span class="dv">0</span>, <span class="dv">2</span>])</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>ax3.plot(data[<span class="st">'bold_data'</span>]<span class="op">*</span><span class="fl">100.0</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>ax3.set_ylabel(<span class="st">"BOLD [%]"</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis labels as seconds</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> [ax1, ax2, ax3]:</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"time [ms]"</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="BoldSearch_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="BoldSearch_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>best <span class="op">=</span> fmin(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    fn<span class="op">=</span>trial,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    space<span class="op">=</span>[</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        hp.uniform(<span class="st">'noise'</span>, <span class="fl">5.0</span>, <span class="fl">10.0</span>), </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    algo<span class="op">=</span>tpe.suggest,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    max_evals<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(best)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>best <span class="op">=</span> fmin(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    fn<span class="op">=</span>trial,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    space<span class="op">=</span>[</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        hp.uniform(<span class="st">'current'</span>, <span class="fl">0.0</span>, <span class="fl">5.0</span>), </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    algo<span class="op">=</span>tpe.suggest,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    max_evals<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(best)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  0%|          | 0/10 [00:00&lt;?, ?trial/s, best loss=?]  0%|          | 0/10 [00:00&lt;?, ?trial/s, best loss=?]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>job exception: tuple indices must be integers or slices, not str
-</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>TypeError: tuple indices must be integers or slices, not str</code></pre>
+<pre><code>  0%|          | 0/100 [00:00&lt;?, ?trial/s, best loss=?]100%|██████████| 100/100 [11:06&lt;00:00,  6.66s/trial, best loss: 9.761940927367129e-06]
+{'current': 3.83953104086519}</code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> trial(best)</span>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> trial(<span class="bu">list</span>(best.values()))</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">6</span>))</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> plt.GridSpec(<span class="dv">1</span>, <span class="dv">3</span>, left<span class="op">=</span><span class="fl">0.05</span>, right<span class="op">=</span><span class="fl">0.95</span>)</span>
@@ -424,30 +403,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># mean firing rate</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> plt.subplot(grid[<span class="dv">0</span>, <span class="dv">0</span>])</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>ax1.plot(data[<span class="st">'mean_fr1'</span>], label<span class="op">=</span><span class="st">"pop0"</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>ax1.plot(data[<span class="st">'mean_fr2'</span>], label<span class="op">=</span><span class="st">"pop1"</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Average mean firing rate [Hz]"</span>)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># BOLD input signal</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> plt.subplot(grid[<span class="dv">0</span>, <span class="dv">1</span>])</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>ax2.plot(data[<span class="st">'input_data'</span>])</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"BOLD input I_CBF"</span>)</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># BOLD output signal</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> plt.subplot(grid[<span class="dv">0</span>, <span class="dv">2</span>])</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>ax3.plot(data[<span class="st">'bold_data'</span>]<span class="op">*</span><span class="fl">100.0</span>)</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>ax3.set_ylabel(<span class="st">"BOLD [%]"</span>)</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis labels as seconds</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> [ax1, ax2, ax3]:</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"time [ms]"</span>)</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>KeyError: 0</code></pre>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>ax1.plot(data[<span class="st">'mean_fr'</span>], label<span class="op">=</span><span class="st">"pop0"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Average mean firing rate [Hz]"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># BOLD input signal</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> plt.subplot(grid[<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>ax2.plot(data[<span class="st">'input_data'</span>])</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"BOLD input I_CBF"</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># BOLD output signal</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> plt.subplot(grid[<span class="dv">0</span>, <span class="dv">2</span>])</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>ax3.plot(data[<span class="st">'bold_data'</span>]<span class="op">*</span><span class="fl">100.0</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>ax3.set_ylabel(<span class="st">"BOLD [%]"</span>)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis labels as seconds</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> [ax1, ax2, ax3]:</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"time [ms]"</span>)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="BoldSearch_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -693,7 +675,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center">Copyright 2022 - Julien Vitay <a href="mailto:julien.vitay@informatik.tu-chemnitz.de" class="email">julien.vitay@informatik.tu-chemnitz.de</a> - Chemnitz University of Technology</div>
+    <div class="nav-footer-center"><a href="https://annarchy.github.io/CNS2023" class="uri">https://annarchy.github.io/CNS2023</a></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
