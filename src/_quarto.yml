@@ -31,6 +31,8 @@ website:
         - 3-Neurons.qmd
         - 4-Networks.qmd
         - 5-Plasticity.qmd
+        - 6-Additional.qmd
+        - 7-BOLD.qmd
       - section: "**Notebooks**"
         contents:
         - notebooks/RateCoded.ipynb
