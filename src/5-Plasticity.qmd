@@ -4,9 +4,6 @@ More complex synaptic behaviors (short-term plasticity, long-term plasticity, et
 
 ![](img/annarchy-color.png){width=60%}
 
-
-## Short-term plasticity (STP)
-
 Spiking synapses can define a `pre_spike` field, defining what happens when a pre-synaptic spike arrives at the synapse.
 
 `g_target` is an alias for the corresponding post-synaptic conductance: it will be replaced by `g_exc` or `g_inh` depending on how the synapse is used.
@@ -25,12 +22,33 @@ proj = Projection(pop, pop, 'exc', DefaultSynapse)
 
 A Synapse object can also have parameters and variables that are updated at each time step of the simulation (expensive) or when needed (event-driven).
 
-The following synapse model implements **short-term plasticity (STP)** (Tsodyks, Uziel and Markram, 2000) allowing to model activity-dependent synaptic transmission.
+
+## Short-term plasticity (STP)
+
+Let's implement **short-term plasticity (STP)** (Tsodyks, Uziel and Markram, 2000). Short-term plasticity, also called dynamical synapses, refers to a phenomenon in which synaptic efficacy changes over time in a way that reflects the history of presynaptic activity^[<http://www.scholarpedia.org/article/Short-term_synaptic_plasticity>].
+
+![Experimental demonstration of facilitating and depressing synapses. Source: @Morrison2008](img/stp.webp){width=70%}
+
+We define a STP synapse, whose post-pynaptic potential (psp, define by `g_target`) depends not only on the weight `w` and the emission of pre-synaptic spike, but also on intra-synaptic variables `x` and `u`.
+
+The synaptic variables `x` and `u` generally follow linear ODEs:
+
+$$\tau_\text{rec} \, \dfrac{d x(t)}{dt} + x(t) = 1$$
+$$\tau_\text{facil} \, \dfrac{d u(t)}{dt} + u(t) = 0.1$$
+
+When a pre-synaptic spike arrives at the synapse, the following updates are applied asynchronously:
+
+$$x(t) \leftarrow (1 - u(t)) \times x(t)$$
+$$u(t) \leftarrow u(t) + 0.1 \, (1 - u(t)) $$
+
+and the post-synaptic conductance is increased from:
+
+$$g(t) \leftarrow g(t) + w \, u(t) \, x(t)$$
+
 
 ```python
 STP = Synapse(
     parameters = """
-        w=0.0
         tau_rec = 1.0
         tau_facil = 1.0
         U = 0.1
@@ -58,7 +76,27 @@ Run it directly on colab: [STP.ipynb](https://colab.research.google.com/github/A
 
 ## Spike-Timing Dependent plasticity (STDP)
 
-`post_spike` similarly defines what happens when a post-synaptic spike is emitted. This can be used to implement the event-driven version of STDP using traces.
+![STDP depends on pre-post spike timing differences. Source: @Bi2001.](img/stdp.jpg)
+
+The weight change of a synapse from a presynaptic neuron j depends on the relative timing between presynaptic spike arrivals and postsynaptic spikes^[<http://www.scholarpedia.org/article/Spike-timing_dependent_plasticity>], i.e. on the the **causation** between the neuron's firing patterns:
+
+* If the pre-synaptic neuron fires **before** the post-synaptic one, the weight is increased (**long-term potentiation**). Pre causes Post to fire.
+* If it fires **after**, the weight is decreased (**long-term depression**). Pre does not cause Post to fire.
+
+The STDP [spike-timing dependent plasticity, @Bi2001] plasticity rule describes how the weight of a synapse evolves when the pre-synaptic neuron fires at $t_\text{pre}$ and the post-synaptic one fires at $t_\text{post}$.
+
+$$
+\Delta w = \begin{cases}
+    A^+ \, \exp (- \dfrac{t_\text{post} - t_\text{pre}}{\tau^+}) \qquad \text{if} \qquad t_\text{post} > t_\text{pre} \\
+     - A^- \, \exp (\dfrac{t_\text{post} - t_\text{pre}}{\tau^-}) \qquad \text{if} \qquad t_\text{post} < t_\text{pre} \\
+\end{cases}
+$$
+
+
+STDP can be implemented online using traces, which is much more efficient. More complex variants of STDP (triplet STDP) exist, but this is the main model of synaptic plasticity in spiking networks.
+
+
+Similarly to `pre_spike`, `post_spike` defines what happens when a post-synaptic spike is emitted. This can be used to implement the event-driven version of STDP using traces.
 
 ```python
 STDP = Synapse(
@@ -85,8 +123,6 @@ STDP = Synapse(
 ::: {.callout-tip}
 ## Notebook: STDP
 
-Download the Jupyter notebook: [STDP.ipynb](https://raw.githubusercontent.com/ANNarchy/tutorial/master/src/notebooks/STDP.ipynb){target="_blank"}
-
-Run it directly on colab: [STDP.ipynb](https://colab.research.google.com/github/ANNarchy/tutorial/blob/master/src/notebooks/STDP.ipynb){target="_blank"}
+Download the Jupyter notebook: [STDP.ipynb](https://raw.githubusercontent.com/ANNarchy/CNS2023/master/src/notebooks/STDP.ipynb){target="_blank"} or run it directly on [colab.](https://colab.research.google.com/github/ANNarchy/CNS2023/blob/master/src/notebooks/STDP.ipynb){target="_blank"}
 
 :::

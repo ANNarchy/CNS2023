@@ -101,7 +101,6 @@ $$
     g(t) = \sum_{t_pre} w \times \delta(t - t_\text{pre})
 $$
 
-![](img/synaptictransmission.png)
 
 For **exponentially-decreasing** or **alpha-shaped** synapses, ODEs have to be additionally introduced for the dynamics of the conductance/current when the neuron does not receive a spike.
 
@@ -112,6 +111,9 @@ $$
 $$
     \tau_\text{exc} \, \dfrac{d \alpha(t)}{dt} + \alpha(t) = g(t)
 $$
+
+
+![](img/synaptictransmission.png){width=60%}
 
 The exponential numerical method should be preferred for these first-order linear ODEs, as integration is then exact.
 

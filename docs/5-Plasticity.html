@@ -20,7 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -62,6 +115,22 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 </head>
 
@@ -101,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1-Rationale.html"><strong>Tutorial</strong></a></li><li class="breadcrumb-item"><a href="./5-Plasticity.html">Synaptic plasticity</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1-Rationale.html"><strong>Tutorial</strong></a></li><li class="breadcrumb-item"><a href="./5-Plasticity.html">Synapse models</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -160,7 +229,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./5-Plasticity.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Synaptic plasticity</span></a>
+ <span class="menu-text">Synapse models</span></a>
   </div>
 </li>
       </ul>
@@ -186,6 +255,30 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Adaptive Exponential IF neuron</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notebooks/SynapticTransmission.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Synaptic transmission</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notebooks/COBA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">COBA network</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notebooks/STP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Short-term Plasticity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notebooks/STDP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">STDP</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -199,13 +292,147 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="synaptic-plasticity" class="level1">
-<h1>Synaptic plasticity</h1>
+<section id="synapse-models" class="level1">
+<h1>Synapse models</h1>
+<p>More complex synaptic behaviors (short-term plasticity, long-term plasticity, etc) can be defined in a <strong>synapse model</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/annarchy-color.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Spiking synapses can define a <code>pre_spike</code> field, defining what happens when a pre-synaptic spike arrives at the synapse.</p>
+<p><code>g_target</code> is an alias for the corresponding post-synaptic conductance: it will be replaced by <code>g_exc</code> or <code>g_inh</code> depending on how the synapse is used.</p>
+<p>By default, a pre-synaptic spike increments the post-synaptic conductance from <code>w</code>: <code>g_target += w</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DefaultSynapse <span class="op">=</span> Synapse(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    pre_spike<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">        g_target += w </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>proj <span class="op">=</span> Projection(pop, pop, <span class="st">'exc'</span>, DefaultSynapse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A Synapse object can also have parameters and variables that are updated at each time step of the simulation (expensive) or when needed (event-driven).</p>
+<section id="short-term-plasticity-stp" class="level2">
+<h2 class="anchored" data-anchor-id="short-term-plasticity-stp">Short-term plasticity (STP)</h2>
+<p>Let’s implement <strong>short-term plasticity (STP)</strong> (Tsodyks, Uziel and Markram, 2000). Short-term plasticity, also called dynamical synapses, refers to a phenomenon in which synaptic efficacy changes over time in a way that reflects the history of presynaptic activity<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/stp.webp" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Experimental demonstration of facilitating and depressing synapses. Source: <span class="citation" data-cites="Morrison2008">Morrison et al. (<a href="#ref-Morrison2008" role="doc-biblioref">2008</a>)</span></figcaption>
+</figure>
+</div>
+<p>We define a STP synapse, whose post-pynaptic potential (psp, define by <code>g_target</code>) depends not only on the weight <code>w</code> and the emission of pre-synaptic spike, but also on intra-synaptic variables <code>x</code> and <code>u</code>.</p>
+<p>The synaptic variables <code>x</code> and <code>u</code> generally follow linear ODEs:</p>
+<p><span class="math display">\tau_\text{rec} \, \dfrac{d x(t)}{dt} + x(t) = 1</span> <span class="math display">\tau_\text{facil} \, \dfrac{d u(t)}{dt} + u(t) = 0.1</span></p>
+<p>When a pre-synaptic spike arrives at the synapse, the following updates are applied asynchronously:</p>
+<p><span class="math display">x(t) \leftarrow (1 - u(t)) \times x(t)</span> <span class="math display">u(t) \leftarrow u(t) + 0.1 \, (1 - u(t)) </span></p>
+<p>and the post-synaptic conductance is increased from:</p>
+<p><span class="math display">g(t) \leftarrow g(t) + w \, u(t) \, x(t)</span></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>STP <span class="op">=</span> Synapse(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    parameters <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">        tau_rec = 1.0</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">        tau_facil = 1.0</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">        U = 0.1</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    equations <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">        dx/dt = (1 - x) / tau_rec : init = 1.0, event-driven</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">        du/dt = (U - u) / tau_facil : init = 0.1, event-driven   </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    pre_spike<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="st">        g_target += w * u * x</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="st">        x *= (1 - u)</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="st">        u += U * (1 - u)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notebook: STP
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the Jupyter notebook: <a href="https://raw.githubusercontent.com/ANNarchy/tutorial/master/src/notebooks/STP.ipynb" target="_blank">STP.ipynb</a></p>
+<p>Run it directly on colab: <a href="https://colab.research.google.com/github/ANNarchy/tutorial/blob/master/src/notebooks/STP.ipynb" target="_blank">STP.ipynb</a></p>
+</div>
+</div>
+</section>
+<section id="spike-timing-dependent-plasticity-stdp" class="level2">
+<h2 class="anchored" data-anchor-id="spike-timing-dependent-plasticity-stdp">Spike-Timing Dependent plasticity (STDP)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/stdp.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">STDP depends on pre-post spike timing differences. Source: <span class="citation" data-cites="Bi2001">Bi and Poo (<a href="#ref-Bi2001" role="doc-biblioref">2001</a>)</span>.</figcaption>
+</figure>
+</div>
+<p>The weight change of a synapse from a presynaptic neuron j depends on the relative timing between presynaptic spike arrivals and postsynaptic spikes<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, i.e.&nbsp;on the the <strong>causation</strong> between the neuron’s firing patterns:</p>
+<ul>
+<li>If the pre-synaptic neuron fires <strong>before</strong> the post-synaptic one, the weight is increased (<strong>long-term potentiation</strong>). Pre causes Post to fire.</li>
+<li>If it fires <strong>after</strong>, the weight is decreased (<strong>long-term depression</strong>). Pre does not cause Post to fire.</li>
+</ul>
+<p>The STDP <span class="citation" data-cites="Bi2001">(spike-timing dependent plasticity, <a href="#ref-Bi2001" role="doc-biblioref">Bi and Poo, 2001</a>)</span> plasticity rule describes how the weight of a synapse evolves when the pre-synaptic neuron fires at <span class="math inline">t_\text{pre}</span> and the post-synaptic one fires at <span class="math inline">t_\text{post}</span>.</p>
+<p><span class="math display">
+\Delta w = \begin{cases}
+    A^+ \, \exp (- \dfrac{t_\text{post} - t_\text{pre}}{\tau^+}) \qquad \text{if} \qquad t_\text{post} &gt; t_\text{pre} \\
+     - A^- \, \exp (\dfrac{t_\text{post} - t_\text{pre}}{\tau^-}) \qquad \text{if} \qquad t_\text{post} &lt; t_\text{pre} \\
+\end{cases}
+</span></p>
+<p>STDP can be implemented online using traces, which is much more efficient. More complex variants of STDP (triplet STDP) exist, but this is the main model of synaptic plasticity in spiking networks.</p>
+<p>Similarly to <code>pre_spike</code>, <code>post_spike</code> defines what happens when a post-synaptic spike is emitted. This can be used to implement the event-driven version of STDP using traces.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>STDP <span class="op">=</span> Synapse(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    parameters <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">        tau_plus = 20.0 : projection ; tau_minus = 20.0 : projection</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">        A_plus = 0.01 : projection   ; A_minus = 0.01 : projection</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">        w_min = 0.0 : projection     ; w_max = 1.0 : projection</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    equations <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">        tau_plus  * dx/dt = -x : event-driven # pre-synaptic trace</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">        tau_minus * dy/dt = -y : event-driven # post-synaptic trace</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    pre_spike<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">        g_target += w</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">        x += A_plus * w_max</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">        w = clip(w + y, w_min , w_max)</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    post_spike<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="st">        y -= A_minus * w_max</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="st">        w = clip(w + x, w_min , w_max)</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notebook: STDP
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the Jupyter notebook: <a href="https://raw.githubusercontent.com/ANNarchy/CNS2023/master/src/notebooks/STDP.ipynb" target="_blank">STDP.ipynb</a> or run it directly on <a href="https://colab.research.google.com/github/ANNarchy/CNS2023/blob/master/src/notebooks/STDP.ipynb" target="_blank">colab.</a></p>
+</div>
+</div>
+
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Bi2001" class="csl-entry" role="listitem">
+Bi, G., and Poo, M. (2001). Synaptic <span>Modification</span> by <span>Correlated Activity</span>: <span>Hebb</span>’s <span>Postulate Revisited</span>. <em>Annual Review of Neuroscience</em> 24, 139–166. doi:<a href="https://doi.org/10.1146/annurev.neuro.24.1.139">10.1146/annurev.neuro.24.1.139</a>.
+</div>
+<div id="ref-Morrison2008" class="csl-entry" role="listitem">
+Morrison, A., Diesmann, M., and Gerstner, W. (2008). Phenomenological models of synaptic plasticity based on spike timing. <em>Biological Cybernetics</em> 98, 459–478. doi:<a href="https://doi.org/10.1007/s00422-008-0233-1">10.1007/s00422-008-0233-1</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="http://www.scholarpedia.org/article/Short-term_synaptic_plasticity" class="uri">http://www.scholarpedia.org/article/Short-term_synaptic_plasticity</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="http://www.scholarpedia.org/article/Spike-timing_dependent_plasticity" class="uri">http://www.scholarpedia.org/article/Spike-timing_dependent_plasticity</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

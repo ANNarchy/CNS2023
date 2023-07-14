@@ -64,6 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../notebooks/STDP.html" rel="next">
+<link href="../notebooks/COBA.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -94,6 +96,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 </head>
 
@@ -133,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Short-term Plasticity</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/RateCoded.html"><strong>Notebooks</strong></a></li><li class="breadcrumb-item"><a href="../notebooks/STP.html">Short-term Plasticity</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -192,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../5-Plasticity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Synaptic plasticity</span></a>
+ <span class="menu-text">Synapse models</span></a>
   </div>
 </li>
       </ul>
@@ -216,6 +234,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../notebooks/AdEx.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Adaptive Exponential IF neuron</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/SynapticTransmission.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Synaptic transmission</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/COBA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">COBA network</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/STP.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Short-term Plasticity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/STDP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">STDP</span></a>
   </div>
 </li>
       </ul>
@@ -246,169 +288,118 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Download the Jupyter notebook: <a href="https://raw.githubusercontent.com/ANNarchy/tutorial/master/src/notebooks/STP.ipynb" target="_blank">STP.ipynb</a></p>
-<p>Run it directly on colab: <a href="https://colab.research.google.com/github/ANNarchy/tutorial/blob/master/src/notebooks/STP.ipynb" target="_blank">STP.ipynb</a></p>
-<p>Implementation of the recurrent network proposed in:</p>
+<p>Download the Jupyter notebook: <a href="https://raw.githubusercontent.com/ANNarchy/CNS2023/master/src/notebooks/STP.ipynb" target="_blank">STP.ipynb</a> or run it directly on <a href="https://colab.research.google.com/github/ANNarchy/CNS2023/blob/master/src/notebooks/STP.ipynb" target="_blank">colab.</a></p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!pip install ANNarchy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The STP model is based on:</p>
 <blockquote class="blockquote">
 <p>Tsodyks, Uziel and Markram (2000). Synchrony Generation in Recurrent Networks with Frequency-Dependent Synapses, The Journal of Neuroscience, 20(50).</p>
 </blockquote>
-<div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:false}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ANNarchy <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>clear()</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dt<span class="op">=</span><span class="fl">0.25</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>setup(dt<span class="op">=</span>dt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>ANNarchy 4.7 (4.7.1.5) on darwin (posix).</code></pre>
-</div>
-</div>
-<p>This network uses simple leaky integrate-and-fire (LIF) neurons. The network is compsed of 400 excitatory and 100 inhibitory neurons, receiving increasingly strong input currents.</p>
 <div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:false}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>LIF <span class="op">=</span> Neuron(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    parameters <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">    tau = 30.0 : population</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">    I = 15.0</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">    tau_I = 3.0 : population</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    equations <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">    tau * dv/dt = -v + g_exc - g_inh + I : init=13.5</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">    tau_I * dg_exc/dt = -g_exc</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">    tau_I * dg_inh/dt = -g_inh</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    spike <span class="op">=</span> <span class="st">"v &gt; 15.0"</span>,</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    reset <span class="op">=</span> <span class="st">"v = 13.5"</span>,</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    refractory <span class="op">=</span> <span class="fl">3.0</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> Population(geometry<span class="op">=</span><span class="dv">500</span>, neuron<span class="op">=</span>LIF)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>P.I <span class="op">=</span> np.sort(Uniform(<span class="fl">14.625</span>, <span class="fl">15.375</span>).get_values(<span class="dv">500</span>))</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>P.v <span class="op">=</span> Uniform(<span class="fl">0.0</span>, <span class="fl">15.0</span>)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>Exc <span class="op">=</span> P[:<span class="dv">400</span>]</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>Inh <span class="op">=</span> P[<span class="dv">400</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ANNarchy <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>clear()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>setup(dt<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ANNarchy 4.7 (4.7.2.5) on darwin (posix).</code></pre>
 </div>
-<p>Short-term plasticity can be defined by dynamical changes of synaptic efficiency, based on pre- or post-synaptic activity.</p>
-<p>We define a STP synapse, whose post-pynaptic potential (psp, define by <code>g_target</code>) depends not only on the weight <code>w</code> and the emission of pre-synaptic spike, but also on intra-synaptic variables <code>x</code> and <code>u</code>:</p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>STP <span class="op">=</span> Synapse(</span>
+</div>
+<p>We will investigate a simple setup with one input neuron firing at a constant rate and one output neuron receiving spikes through a STP synapse.</p>
+<p>The receiving neuron is a simple leaky integrate-and-fire:</p>
+<div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:false}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>LIF <span class="op">=</span> Neuron(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    parameters <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">    w=0.0</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">    tau_rec = 1.0</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">    tau_facil = 1.0</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">    U = 0.1</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">        tau = 10.0 : population</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    equations <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">        tau * dv/dt = -v + g_exc : init=0.0</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    equations <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">    dx/dt = (1 - x)/tau_rec : init = 1.0, event-driven</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">    du/dt = (U - u)/tau_facil : init = 0.1, event-driven   </span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    pre_spike<span class="op">=</span><span class="st">"""</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">    g_target += w * u * x</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">    x *= (1 - u)</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="st">    u += U * (1 - u)</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    spike <span class="op">=</span> <span class="st">"v &gt; 15.0"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    reset <span class="op">=</span> <span class="st">"v = 0.0"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    refractory <span class="op">=</span> <span class="fl">3.0</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Creating the projection between the excitatory and inhibitory is straightforward when the right parameters are chosen:</p>
+<p>Short-term plasticity is defined by dynamical changes of synaptic efficiency, based on pre- or post-synaptic activity.</p>
+<p>We define a STP synapse, whose post-pynaptic potential (psp, define by <code>g_target</code>) depends not only on the weight <code>w</code> and the emission of pre-synaptic spike, but also on intra-synaptic variables <code>x</code> and <code>u</code>.</p>
+<p>The synaptic variables <code>x</code> and <code>u</code> generally follow linear ODEs:</p>
+<p><span class="math display">\tau_\text{rec} \, \dfrac{d x(t)}{dt} + x(t) = 1</span> <span class="math display">\tau_\text{facil} \, \dfrac{d u(t)}{dt} + u(t) = 0.1</span></p>
+<p>When a pre-synaptic spike arrives at the synapse, the following updates are applied asynchronously:</p>
+<p><span class="math display">x(t) \leftarrow (1 - u(t)) \times x(t)</span> <span class="math display">u(t) \leftarrow u(t) + 0.1 \, (1 - u(t)) </span></p>
+<p>and the post-synaptic conductance is increased from:</p>
+<p><span class="math display">g(t) \leftarrow g(t) + w \, u(t) \, x(t)</span></p>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters for the synapses</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Aee <span class="op">=</span> <span class="fl">1.8</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Aei <span class="op">=</span> <span class="fl">5.4</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>Aie <span class="op">=</span> <span class="fl">7.2</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>Aii <span class="op">=</span> <span class="fl">7.2</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>Uee <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>Uei <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>Uie <span class="op">=</span> <span class="fl">0.04</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>Uii <span class="op">=</span> <span class="fl">0.04</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>tau_rec_ee <span class="op">=</span> <span class="fl">800.0</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>tau_rec_ei <span class="op">=</span> <span class="fl">800.0</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>tau_rec_ie <span class="op">=</span> <span class="fl">100.0</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>tau_rec_ii <span class="op">=</span> <span class="fl">100.0</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>tau_facil_ie <span class="op">=</span> <span class="fl">1000.0</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>tau_facil_ii <span class="op">=</span> <span class="fl">1000.0</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Create projections</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>proj_ee <span class="op">=</span> Projection(pre<span class="op">=</span>Exc, post<span class="op">=</span>Exc, target<span class="op">=</span><span class="st">'exc'</span>, synapse<span class="op">=</span>STP)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>proj_ee.connect_fixed_probability(probability<span class="op">=</span><span class="fl">0.1</span>, weights<span class="op">=</span>Normal(Aee, (Aee<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">0.2</span><span class="op">*</span>Aee, <span class="bu">max</span><span class="op">=</span><span class="fl">2.0</span><span class="op">*</span>Aee)) </span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>proj_ee.U <span class="op">=</span> Normal(Uee, (Uee<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">0.1</span>, <span class="bu">max</span><span class="op">=</span><span class="fl">0.9</span>)</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>proj_ee.tau_rec <span class="op">=</span> Normal(tau_rec_ee, (tau_rec_ee<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">5.0</span>)</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>proj_ee.tau_facil <span class="op">=</span> dt <span class="co"># Cannot be 0!</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>proj_ei <span class="op">=</span> Projection(pre<span class="op">=</span>Inh, post<span class="op">=</span>Exc, target<span class="op">=</span><span class="st">'inh'</span>, synapse<span class="op">=</span>STP)</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>proj_ei.connect_fixed_probability(probability<span class="op">=</span><span class="fl">0.1</span>, weights<span class="op">=</span>Normal(Aei, (Aei<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">0.2</span><span class="op">*</span>Aei, <span class="bu">max</span><span class="op">=</span><span class="fl">2.0</span><span class="op">*</span>Aei))</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>proj_ei.U <span class="op">=</span> Normal(Uei, (Uei<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">0.1</span>, <span class="bu">max</span><span class="op">=</span><span class="fl">0.9</span>)</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>proj_ei.tau_rec <span class="op">=</span> Normal(tau_rec_ei, (tau_rec_ei<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">5.0</span>)</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>proj_ei.tau_facil <span class="op">=</span> dt <span class="co"># Cannot be 0!</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>proj_ie <span class="op">=</span> Projection(pre<span class="op">=</span>Exc, post<span class="op">=</span>Inh, target<span class="op">=</span><span class="st">'exc'</span>, synapse<span class="op">=</span>STP)</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>proj_ie.connect_fixed_probability(probability<span class="op">=</span><span class="fl">0.1</span>, weights<span class="op">=</span>Normal(Aie, (Aie<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">0.2</span><span class="op">*</span>Aie, <span class="bu">max</span><span class="op">=</span><span class="fl">2.0</span><span class="op">*</span>Aie))</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>proj_ie.U <span class="op">=</span> Normal(Uie, (Uie<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">0.001</span>, <span class="bu">max</span><span class="op">=</span><span class="fl">0.07</span>)</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>proj_ie.tau_rec <span class="op">=</span> Normal(tau_rec_ie, (tau_rec_ie<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">5.0</span>)</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>proj_ie.tau_facil <span class="op">=</span> Normal(tau_facil_ie, (tau_facil_ie<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">5.0</span>)</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>proj_ii <span class="op">=</span> Projection(pre<span class="op">=</span>Inh, post<span class="op">=</span>Inh, target<span class="op">=</span><span class="st">'inh'</span>, synapse<span class="op">=</span>STP)</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>proj_ii.connect_fixed_probability(probability<span class="op">=</span><span class="fl">0.1</span>, weights<span class="op">=</span>Normal(Aii, (Aii<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">0.2</span><span class="op">*</span>Aii, <span class="bu">max</span><span class="op">=</span><span class="fl">2.0</span><span class="op">*</span>Aii))</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>proj_ii.U <span class="op">=</span> Normal(Uii, (Uii<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">0.001</span>, <span class="bu">max</span><span class="op">=</span><span class="fl">0.07</span>)</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>proj_ii.tau_rec <span class="op">=</span> Normal(tau_rec_ii, (tau_rec_ii<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">5.0</span>)</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>proj_ii.tau_facil <span class="op">=</span> Normal(tau_facil_ii, (tau_facil_ii<span class="op">/</span><span class="fl">2.0</span>), <span class="bu">min</span><span class="op">=</span><span class="fl">5.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>STP <span class="op">=</span> Synapse(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    parameters <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">        tau_rec = 10.0</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">        tau_facil = 10.0</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">        U = 0.1</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    equations <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">        dx/dt = (1 - x)/tau_rec : init = 1.0, exponential</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">        du/dt = (U - u)/tau_facil : init = 0.1, exponential</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    pre_spike<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">        g_target += w * u * x</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="st">        </span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="st">        x *= (1 - u)</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="st">        u += U * (1 - u)</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The input population has one neuron that spikes regulary at 20 Hz (i.e.&nbsp;every 50 ms) for one second.</p>
+<p>The projection uses the <code>STP</code> synapse.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Input</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>inp <span class="op">=</span> SpikeSourceArray(spike_times<span class="op">=</span>[[<span class="fl">50.</span><span class="op">*</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>)]])</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Output</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>pop <span class="op">=</span> Population(geometry<span class="op">=</span><span class="dv">1</span>, neuron<span class="op">=</span>LIF)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create projections</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>proj <span class="op">=</span> Projection(pre<span class="op">=</span>inp, post<span class="op">=</span>pop, target<span class="op">=</span><span class="st">'exc'</span>, synapse<span class="op">=</span>STP)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>proj.connect_all_to_all(weights<span class="op">=</span><span class="fl">10.0</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>&lt;ANNarchy.core.Projection.Projection at 0x12771b7c0&gt;</code></pre>
+</div>
 </div>
 <p>We compile and simulate for 10 seconds:</p>
-<div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:false}" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">compile</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Me <span class="op">=</span> Monitor(Exc, <span class="st">'spike'</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Mi <span class="op">=</span> Monitor(Inh, <span class="st">'spike'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>duration <span class="op">=</span> <span class="fl">10000.0</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>simulate(duration, measure_time<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:false}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">compile</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Simulating 10.0 seconds of the network took 0.10498785972595215 seconds. </code></pre>
+<pre><code>Compiling ...  OK </code></pre>
+</div>
+</div>
+<p>We can record the postsynaptic membrane potential and the synaptic variables <code>u</code> and <code>v</code>:</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> Monitor(pop, [<span class="st">'v'</span>])</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> Monitor(proj, [<span class="st">'x'</span>, <span class="st">'u'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>WARNING: Monitor(): it is a bad idea to record synaptic variables of a projection at each time step! </code></pre>
 </div>
 </div>
 <p>We retrieve the recordings and plot them:</p>
 <div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:false}" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve recordings</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data_exc <span class="op">=</span> Me.get()</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>data_inh <span class="op">=</span> Mi.get()</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>te, ne <span class="op">=</span> Me.raster_plot(data_exc[<span class="st">'spike'</span>])</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>ti, ni <span class="op">=</span> Mi.raster_plot(data_inh[<span class="st">'spike'</span>])</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of the exc population</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> Me.histogram(data_exc[<span class="st">'spike'</span>], bins<span class="op">=</span><span class="fl">1.0</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean firing rate of each excitatory neuron</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>rates <span class="op">=</span> []</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> neur <span class="kw">in</span> data_exc[<span class="st">'spike'</span>].keys():</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    rates.append(<span class="bu">len</span>(data_exc[<span class="st">'spike'</span>][neur])<span class="op">/</span>duration<span class="op">*</span><span class="fl">1000.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>simulate(<span class="fl">1100.0</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>data_neuron <span class="op">=</span> m.get()</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>data_synapse <span class="op">=</span> n.get()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(style<span class="op">=</span><span class="st">"white"</span>, palette<span class="op">=</span><span class="st">"muted"</span>, color_codes<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">"talk"</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">15</span>))</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.plot(te, ne, <span class="st">'b.'</span>, markersize<span class="op">=</span><span class="fl">1.0</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.plot(ti, ni, <span class="st">'b.'</span>, markersize<span class="op">=</span><span class="fl">1.0</span>)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.xlim((<span class="dv">0</span>, duration))<span class="op">;</span> plt.ylim((<span class="dv">0</span>,<span class="dv">500</span>))</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time (ms)'</span>)</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'# neuron'</span>)</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>plt.plot(h<span class="op">/</span><span class="fl">400.</span>)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time (ms)'</span>)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Net activity'</span>)</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">sorted</span>(rates))</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Spikes / sec'</span>)</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'# neuron'</span>)</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.plot(data_neuron[<span class="st">'v'</span>])</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Post-synaptic membrane potential'</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>plt.plot(data_synapse[<span class="st">'x'</span>][:, <span class="dv">0</span>, <span class="dv">0</span>], label<span class="op">=</span><span class="st">'x'</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>plt.plot(data_synapse[<span class="st">'u'</span>][:, <span class="dv">0</span>, <span class="dv">0</span>], label<span class="op">=</span><span class="st">'u'</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Post-synaptic membrane potential'</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -416,7 +407,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="STP_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
+</div>
+</div>
+<p><strong>Experiments:</strong></p>
+<ol type="1">
+<li>With the default values of <span class="math inline">\tau_\text{rec}</span> and <span class="math inline">\tau_\text{facil}</span>, there is no visible facilitating nor depressing effects in synaptic transmission. Increase their value (e.g.&nbsp;100 ms or 1000 ms) and/or make them asymmetric to observe such effects.</li>
+<li>Use the ‘event-driven’ numerical for ‘x’ and ‘u’. What does it change to the recorded traces?</li>
+</ol>
 
 
 
@@ -654,6 +657,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="../notebooks/COBA.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">COBA network</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../notebooks/STDP.html" class="pagination-link">
+        <span class="nav-page-text">STDP</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

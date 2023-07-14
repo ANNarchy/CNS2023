@@ -35,6 +35,10 @@ website:
         contents:
         - notebooks/RateCoded.ipynb
         - notebooks/AdEx.ipynb
+        - notebooks/SynapticTransmission.ipynb
+        - notebooks/COBA.ipynb
+        - notebooks/STP.ipynb
+        - notebooks/STDP.ipynb
 
   page-footer:
     center: |
