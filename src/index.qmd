@@ -1,7 +1,7 @@
 ---
 title: "Simulation of spiking and BOLD signals using the ANNarchy simulator"
 
-authors: Julien Vitay, Helge Ülo Dinkelbach and Fred Hamker
+authors: Helge Ülo Dinkelbach, Julien Vitay and Fred Hamker
 
 institute: 
     - Chemnitz University of Technology
