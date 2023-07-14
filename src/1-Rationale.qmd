@@ -14,13 +14,15 @@ Some simulators provide fixed libraries of neural and synaptic models:
 * **GENESIS** <http://genesis-sim.org/>
     * Multi-compartmental models, spiking neurons (CPU) 
 * **NEST** <https://nest-initiative.org/>
-    * Spiking neurons (CPU)
+    * Spiking neurons (CPU, GPU)
 * **GeNN** <https://genn-team.github.io/genn/>
-    * Spiking neurons (GPU)
+    * Spiking neurons (GPU, CPU)
+* **CARLsim** <https://sites.socsci.uci.edu/~jkrichma/CARLsim/>
+    * Spiking neurons (GPU, CPU)
 * **Auryn** <https://fzenke.net/auryn/doku.php>
     * Spiking neurons (CPU)
 
-Some, such as ANNarchy,  rely instead on code generation, allowing virtual any model to be implemented:
+Some, such as ANNarchy, rely instead on code generation, allowing virtual any model to be implemented:
 
 * **Brian** <https://briansimulator.org/>
     * Spiking neurons (CPU)
@@ -40,9 +42,11 @@ Some, such as ANNarchy,  rely instead on code generation, allowing virtual any m
 
 * **Code generation** in C++, parallelized using OpenMP on CPU and CUDA on GPU (MPI is coming).
 
+* Provide **several sparse matrix formats** to optimize the implementation of a specific network on CPUs and GPUs, which are selected using **heuristics**.
+
 * Synaptic, intrinsic and structural plasticity mechanisms.
 
-* **BOLD monitoring** from spiking neural networks.
+* **BOLD monitoring** from spiking or rate-coded neural networks.
 
 @Maith2022\
 **BOLD Monitoring in the Neural Simulator ANNarchy.**\
@@ -55,7 +59,7 @@ Some, such as ANNarchy,  rely instead on code generation, allowing virtual any m
 
 ## Parallel performance
 
-Most importantly, ANNarchy is fast on multicore systems and GPUs. Depending on the model, it is comparable to Brian2 and faster than NEST on standard consumer PCs.
+Most importantly, ANNarchy is fast on shared memory systems utilizing multi-core CPUs and GPUs. Depending on the model, it is comparable to Brian2 and faster than NEST on standard consumer PCs.
 
 ![COBA Benchmark with 4000 neurons using an AMD Ryzen7 2700X / NVIDIA RTX 2060. See @Dinkelbach2019.](img/coba_4k_times.png){width=60%}
 
