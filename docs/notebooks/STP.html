@@ -272,6 +272,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">STDP</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/BoldMonitoring.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD monitoring</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/BoldModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/BoldSearch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fitting BOLD signals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/BoldParkinson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD monitoring using a basal ganglia model</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -374,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>proj <span class="op">=</span> Projection(pre<span class="op">=</span>inp, post<span class="op">=</span>pop, target<span class="op">=</span><span class="st">'exc'</span>, synapse<span class="op">=</span>STP)</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>proj.connect_all_to_all(weights<span class="op">=</span><span class="fl">10.0</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>&lt;ANNarchy.core.Projection.Projection at 0x12771b7c0&gt;</code></pre>
+<pre><code>&lt;ANNarchy.core.Projection.Projection at 0x11f5106a0&gt;</code></pre>
 </div>
 </div>
 <p>We compile and simulate for 10 seconds:</p>

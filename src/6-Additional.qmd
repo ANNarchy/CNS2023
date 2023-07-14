@@ -1,7 +1,36 @@
 # Additional features
 
 
+## Standard models
+
+ANNarchy provides standard models from the PyNN interface:
+
+<https://neuralensemble.org/PyNN/>
+
+### Neurons
+
+* LeakyIntegrator
+* Izhikevich
+* IF_curr_exp
+* IF_cond_exp
+* IF_curr_alpha
+* IF_cond_alpha
+* HH_cond_exp
+* EIF_cond_exp_isfa_ista
+* EIF_cond_alpha_isfa_ista
+
+### Synapses
+
+* Hebb
+* Oja
+* iBCM
+* STP
+* STDP
+
+
 ## Input populations
+
+See <https://annarchy.github.io/manual/Inputs.html>
 
 ### TimedArrays
 
@@ -29,4 +58,131 @@ compile()
 simulate(500.)
 ```
 
-### 
+### Current injection
+
+```python
+inp = Population(100, Neuron(equations="r = sin(t)"))
+
+pop = Population(100, Izhikevich)
+
+proj = CurrentInjection(inp, pop, 'exc')
+proj.connect_current()
+```
+
+### SpikeSourceArray
+
+```python
+spike_times = [
+  [  10 + 20*i for i in range(100)]
+  [  11 + 20*i for i in range(100)]
+]
+
+pop = SpikeSourceArray(spike_times=spike_times)
+```
+
+### PoissonPopulation
+
+```python
+pop = PoissonPopulation(100, rates=30.)
+
+pop = PoissonPopulation(100, rates=np.linspace(0.0, 100.0, 100))
+
+pop = PoissonPopulation(
+    geometry=100,
+    parameters = """
+        amp = 100.0
+        frequency = 50.0
+    """,
+    rates="amp * (1.0 + sin(2*pi*frequency*t/1000.0) )/2.0"
+)
+```
+
+or from a TimedArray.
+
+### Homogeneous correlated inputs
+
+```python
+pop_poisson = PoissonPopulation(200, rates=10.)
+pop_corr    = HomogeneousCorrelatedSpikeTrains(200, rates=10., corr=0.3, tau=10.)
+```
+
+![](img/homogeneouscorrelated.png)
+
+## Simulation tools
+
+### `simulate_until()`
+
+
+```python
+
+pop = Population( ... , stop_condition = "r > 1.0")
+
+compile()
+
+t = simulate_until(max_duration=1000.0, populations=pop)
+```
+
+### `parallel_run()``
+
+```python
+pop1 = PoissonPopulation(100, rates=10.0)
+pop2 = Population(100, Izhikevich)
+proj = Projection(pop1, pop2, 'exc')
+proj.connect_fixed_probability(weights=5.0, probability=0.2)
+m = Monitor(pop2, 'spike')
+
+compile()
+
+def simulation(idx, net):
+    net.get(pop1).rates = 10. * idx
+    net.simulate(1000.)
+    return net.get(m).raster_plot()
+
+results = parallel_run(method=simulation, number=3)
+
+t1, n1 = results[0]
+t2, n2 = results[1]
+t3, n3 = results[2]
+```
+
+## Structural plasticity
+
+```python
+CreatingSynapse = Synapse(
+    parameters = " ... ",
+    equations = " ... ",
+    creating = "pre.mean_r * post.mean_r > 0.7 : proba = 0.5, w = 1.0"
+)
+
+PruningSynapse = Synapse(
+    parameters = " T = 100000 : int, projection ",
+    equations = """
+        age = if pre.r * post.r > 0.0 : 
+                0
+              else :
+                age + 1 : init = 0, int""",
+    pruning = "age > T : proba = 0.5"
+)
+```
+
+## Convolutions and pooling
+
+```python
+from ANNarchy import *
+from ANNarchy.extensions.convolution import *
+
+inp = Population(geometry=(100, 100), neuron=Neuron(parameters="r = 0.0"))
+conv = Population(geometry=(100, 100), neuron=Neuron(equations="r = sum(exc)"))
+pool = Population(geometry=(50, 50), neuron=Neuron(equations="r = sum(exc)"))
+
+proj_conv = Convolution(inp, conv, 'exc')
+proj_conv.connect_filter(
+    [
+        [-1., 0., 1.],
+        [-1., 0., 1.],
+        [-1., 0., 1.]
+    ])
+
+proj_pool = Pooling(conv, pool, 'exc', operation='max') # max-pooling
+proj_pool.connect_pooling() # extent=(2, 2) is implicit
+```

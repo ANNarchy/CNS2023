@@ -42,7 +42,7 @@ Some, such as ANNarchy, rely instead on code generation, allowing virtual any mo
 
 * **Code generation** in C++, parallelized using OpenMP on CPU and CUDA on GPU (MPI is coming).
 
-* Provide **several sparse matrix formats** to optimize the implementation of a specific network on CPUs and GPUs, which are selected using **heuristics**.
+* Several **sparse matrix formats** to optimize the implementation of a specific network on CPUs and GPUs, which are selected using **heuristics** and **auto-tuining**.
 
 * Synaptic, intrinsic and structural plasticity mechanisms.
 

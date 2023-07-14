@@ -20,7 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -62,6 +115,22 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 </head>
 
@@ -222,6 +291,30 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">STDP</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notebooks/BoldMonitoring.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD monitoring</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notebooks/BoldModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notebooks/BoldSearch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fitting BOLD signals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notebooks/BoldParkinson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD monitoring using a basal ganglia model</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -237,11 +330,203 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="bold-signals" class="level1">
 <h1>BOLD signals</h1>
+<section id="fmri-and-bold-signals" class="level2">
+<h2 class="anchored" data-anchor-id="fmri-and-bold-signals">fMRI and BOLD signals</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/drP8Nk67l1s" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/bold-principle.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="balloon-models" class="level2">
+<h2 class="anchored" data-anchor-id="balloon-models">Balloon models</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/BOLD-balloon.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>The provided BOLD models follow the Balloon model <span class="citation" data-cites="Buxton1998">(<a href="#ref-Buxton1998" role="doc-biblioref">Buxton et al., 1998</a>)</span> with the different variations studied in <span class="citation" data-cites="Stephan2007">(<a href="#ref-Stephan2007" role="doc-biblioref">Stephan et al., 2007</a>)</span>. Those models all compute the vascular response to neural activity through a dampened oscillator:</p>
+<p><span class="math display">
+    \frac{ds}{dt} = \phi \, I_\text{CBF} - \kappa \, s - \gamma \, (f_{in} - 1)
+</span></p>
+<p><span class="math display">
+    \frac{df_{in}}{dt} = s
+</span></p>
+<p>This allows to compute the oxygen extraction fraction through the inflated balloon model:</p>
+<p><span class="math display">
+    E = 1 - (1 - E_{0})^{ \frac{1}{f_{in}} }
+</span></p>
+<p>The (normalized) venous blood volume is computed as:</p>
+<p><span class="math display">
+    \tau_0 \, \frac{dv}{dt} = (f_{in} - f_{out})
+</span></p>
+<p><span class="math display">
+    f_{out} = v^{\frac{1}{\alpha}}
+</span></p>
+<p>The level of deoxyhemoglobin into the venous compartment is computed by:</p>
+<p><span class="math display">
+    \tau_0 \, \frac{dq}{dt} = f_{in} \, \frac{E}{E_0} - \frac{q}{v} \, f_{out}
+</span></p>
+<p>Using the two signals <span class="math inline">v</span> and <span class="math inline">q</span>, there are two ways to compute the corresponding BOLD signal:</p>
+<ul>
+<li><strong>N:</strong> Non-linear BOLD equation:</li>
+</ul>
+<p><span class="math display">
+    BOLD = v_0 \, ( k_1 \, (1-q) + k_2 \, (1- \dfrac{q}{v}) + k_3 \, (1 - v) )
+</span></p>
+<ul>
+<li><strong>L:</strong> Linear BOLD equation:</li>
+</ul>
+<p><span class="math display">
+    BOLD = v_0 \, ((k_1 + k_2) \, (1 - q) + (k_3 - k_2) \, (1 - v))
+</span></p>
+<p>Additionally, the three coefficients <span class="math inline">k_1</span>, <span class="math inline">k_2</span>, <span class="math inline">k_3</span> can be computed in two different ways:</p>
+<ul>
+<li><strong>C:</strong> classical coefficients from <span class="citation" data-cites="Buxton1998">(<a href="#ref-Buxton1998" role="doc-biblioref">Buxton et al., 1998</a>)</span>:</li>
+</ul>
+<p><span class="math display">k_1            = (1 - v_0) \, 4.3 \, v_0 \, E_0 \, \text{TE}</span></p>
+<p><span class="math display">k_2            = 2 \, E_0</span></p>
+<p><span class="math display">k_3            = 1 - \epsilon</span></p>
+<ul>
+<li><strong>R:</strong> revised coefficients from <span class="citation" data-cites="Obata2004">(<a href="#ref-Obata2004" role="doc-biblioref">Obata et al., 2004</a>)</span>:</li>
+</ul>
+<p><span class="math display">k_1            = 4.3 \, v_0 \, E_0 \, \text{TE}</span></p>
+<p><span class="math display">k_2            = \epsilon \, r_0 \, E_0 \, \text{TE}</span></p>
+<p><span class="math display">k_3            = 1 - \epsilon</span></p>
+<p>This makes a total of four different BOLD model (RN, RL, CN, CL) which are provided by the extension.</p>
+<p>Defining a custom model is easy in ANNarchy, as we have linear first-order ODES as with rate-coded neurons!</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>balloon_RN <span class="op">=</span> BoldModel(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    parameters <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">        phi       = 1.0         ;   kappa     = 1/1.54</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">        gamma     = 1/2.46      ;   E_0       = 0.34</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">        tau       = 0.98        ;   alpha     = 0.33</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">        V_0       = 0.02        ;   v_0       = 40.3</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">        TE        = 40/1000.    ;   epsilon   = 1.43</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">        r_0       = 25.         ;   second    = 1000.0</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    equations <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">        # CBF input</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">        I_CBF          = sum(I_CBF)       </span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">        ds/dt          = (phi * I_CBF - kappa * s - gamma * (f_in - 1))/second  </span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">        df_in/dt       = s / second                                                : init=1, min=0.01</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">        # Balloon model</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">        E              = 1 - (1 - E_0)**(1 / f_in)                                 : init=0.3424</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">        dq/dt          = (f_in * E / E_0 - (q / v) * f_out)/(tau*second)           : init=1, min=0.01</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">        dv/dt          = (f_in - f_out)/(tau*second)                               : init=1, min=0.01</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">        f_out          = v**(1 / alpha)                                            : init=1, min=0.01</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st">        # Revised coefficients</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">        k_1            = 4.3 * v_0 * E_0 * TE</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="st">        k_2            = epsilon * r_0 * E_0 * TE</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="st">        k_3            = 1.0 - epsilon</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="st">        # Non-linear BOLD equation</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="st">        BOLD           = V_0 * (k_1 * (1 - q) + k_2 * (1 - (q / v)) + k_3 * (1 - v))</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    inputs<span class="op">=</span>[<span class="st">'I_CBF'</span>]</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>BoldModel</code> can then be passed to a <code>BoldMonitor</code> that will map the output variable (<code>r</code>) of one or more populations onto the input <code>I_CBF</code> and apply the balloon model:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>m_bold <span class="op">=</span> BoldMonitor(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    populations <span class="op">=</span> [pop], <span class="co"># recorded populations</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    bold_model <span class="op">=</span> balloon_RN(), <span class="co"># BOLD model to use (default is balloon_RN)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    mapping <span class="op">=</span> {<span class="st">'I_CBF'</span>: <span class="st">'r'</span>}, <span class="co"># mapping from pop.r to I_CBF</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    normalize_input <span class="op">=</span> <span class="dv">2000</span>,  <span class="co"># time window to compute baseline.</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    recorded_variables <span class="op">=</span> [<span class="st">"I_CBF"</span>, <span class="st">"BOLD"</span>]  <span class="co"># variables to be recorded</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>BoldMonitor</code>can be used as a regular <code>Monitor</code> to record the BOLD signal during a (long) simulation:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>simulate(<span class="dv">20000</span>)     <span class="co"># 20s with low noise</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>bold_data <span class="op">=</span> m_bold.get(<span class="st">"BOLD"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notebook: BOLD monitoring
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the Jupyter notebook: <a href="https://raw.githubusercontent.com/ANNarchy/CNS2023/master/src/notebooks/BoldMonitoring.ipynb" target="_blank">BoldMonitoring.ipynb</a> or run it directly on <a href="https://colab.research.google.com/github/ANNarchy/CNS2023/blob/master/src/notebooks/BoldMonitoring.ipynb" target="_blank">colab.</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notebook: BOLD models
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the Jupyter notebook: <a href="https://raw.githubusercontent.com/ANNarchy/CNS2023/master/src/notebooks/BoldModel.ipynb" target="_blank">BoldModel.ipynb</a> or run it directly on <a href="https://colab.research.google.com/github/ANNarchy/CNS2023/blob/master/src/notebooks/BoldModel.ipynb" target="_blank">colab.</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notebook: BOLD search
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the Jupyter notebook: <a href="https://raw.githubusercontent.com/ANNarchy/CNS2023/master/src/notebooks/BoldSearch.ipynb" target="_blank">BoldSearch.ipynb</a> or run it directly on <a href="https://colab.research.google.com/github/ANNarchy/CNS2023/blob/master/src/notebooks/BoldSearch.ipynb" target="_blank">colab.</a></p>
+</div>
+</div>
+</section>
+<section id="basal-ganglia-pathway-changes-in-parkinsons-disease" class="level2">
+<h2 class="anchored" data-anchor-id="basal-ganglia-pathway-changes-in-parkinsons-disease">Basal ganglia pathway changes in Parkinson’s disease</h2>
+<p><span class="citation" data-cites="Maith2020">Maith et al. (<a href="#ref-Maith2020" role="doc-biblioref">2020</a>)</span><br>
+<strong>A computational model-based analysis of basal ganglia pathway changes in Parkinson’s disease inferred from resting-state fMRI.</strong><br>
+<em>European Journal of Neuroscience</em>. <a href="https://doi.org/10.1111/ejn.14868">doi:10.1111/ejn.14868</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/bold-bg.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notebook: BOLD monitoring using a basal ganglia model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the Jupyter notebook: <a href="https://raw.githubusercontent.com/ANNarchy/CNS2023/master/src/notebooks/BoldParkinson.ipynb" target="_blank">BoldParkinson.ipynb</a> or run it directly on <a href="https://colab.research.google.com/github/ANNarchy/CNS2023/blob/master/src/notebooks/BoldParkinson.ipynb" target="_blank">colab.</a></p>
+</div>
+</div>
+
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Buxton1998" class="csl-entry" role="listitem">
+Buxton, R. B., Wong, E. C., and Frank, L. R. (1998). Dynamics of blood flow and oxygenation changes during brain activation: The balloon model. <em>Magnetic Resonance in Medicine</em> 39, 855–864. doi:<a href="https://doi.org/10.1002/mrm.1910390602">https://doi.org/10.1002/mrm.1910390602</a>.
+</div>
+<div id="ref-Maith2020" class="csl-entry" role="listitem">
+Maith, O., Escudero, F. V., Dinkelbach, H. Ü., Baladron, J., Horn, A., Irmen, F., et al. (2020). A computational model-based analysis of basal ganglia pathway changes in <span>Parkinson</span>’s disease inferred from resting-state <span class="nocase">fMRI</span>. <em>European Journal of Neuroscience</em> n/a. doi:<a href="https://doi.org/10.1111/ejn.14868">10.1111/ejn.14868</a>.
+</div>
+<div id="ref-Obata2004" class="csl-entry" role="listitem">
+Obata, T., Liu, T. T., Miller, K. L., Luh, W.-M., Wong, E. C., Frank, L. R., et al. (2004). Discrepancies between BOLD and flow dynamics in primary and supplementary motor areas: Application of the balloon model to the interpretation of BOLD transients. <em>NeuroImage</em> 21, 144–153. doi:<a href="https://doi.org/10.1016/j.neuroimage.2003.08.040">https://doi.org/10.1016/j.neuroimage.2003.08.040</a>.
+</div>
+<div id="ref-Stephan2007" class="csl-entry" role="listitem">
+Stephan, K. E., Weiskopf, N., Drysdale, P. M., Robinson, P. A., and Friston, K. J. (2007). Comparing hemodynamic models with DCM. <em>NeuroImage</em> 38, 387–401. doi:<a href="https://doi.org/10.1016/j.neuroimage.2007.07.040">https://doi.org/10.1016/j.neuroimage.2007.07.040</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

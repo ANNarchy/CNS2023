@@ -241,6 +241,30 @@ div.csl-indent {
  <span class="menu-text">STDP</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notebooks/BoldMonitoring.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD monitoring</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notebooks/BoldModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notebooks/BoldSearch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fitting BOLD signals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notebooks/BoldParkinson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD monitoring using a basal ganglia model</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -284,11 +308,15 @@ div.csl-indent {
 </ul></li>
 <li><strong>NEST</strong> <a href="https://nest-initiative.org/" class="uri">https://nest-initiative.org/</a>
 <ul>
-<li>Spiking neurons (CPU)</li>
+<li>Spiking neurons (CPU, GPU)</li>
 </ul></li>
 <li><strong>GeNN</strong> <a href="https://genn-team.github.io/genn/" class="uri">https://genn-team.github.io/genn/</a>
 <ul>
-<li>Spiking neurons (GPU)</li>
+<li>Spiking neurons (GPU, CPU)</li>
+</ul></li>
+<li><strong>CARLsim</strong> <a href="https://sites.socsci.uci.edu/~jkrichma/CARLsim/" class="uri">https://sites.socsci.uci.edu/~jkrichma/CARLsim/</a>
+<ul>
+<li>Spiking neurons (GPU, CPU)</li>
 </ul></li>
 <li><strong>Auryn</strong> <a href="https://fzenke.net/auryn/doku.php" class="uri">https://fzenke.net/auryn/doku.php</a>
 <ul>
@@ -318,8 +346,9 @@ div.csl-indent {
 <li><p>Only local biologically realistic mechanisms are possible (no backpropagation).</p></li>
 <li><p><strong>Equation-oriented</strong> description of neural/synaptic dynamics (à la Brian).</p></li>
 <li><p><strong>Code generation</strong> in C++, parallelized using OpenMP on CPU and CUDA on GPU (MPI is coming).</p></li>
+<li><p>Several <strong>sparse matrix formats</strong> to optimize the implementation of a specific network on CPUs and GPUs, which are selected using <strong>heuristics</strong> and <strong>auto-tuining</strong>.</p></li>
 <li><p>Synaptic, intrinsic and structural plasticity mechanisms.</p></li>
-<li><p><strong>BOLD monitoring</strong> from spiking neural networks.</p></li>
+<li><p><strong>BOLD monitoring</strong> from spiking or rate-coded neural networks.</p></li>
 </ul>
 <p><span class="citation" data-cites="Maith2022">Maith et al. (<a href="#ref-Maith2022" role="doc-biblioref">2022</a>)</span><br>
 <strong>BOLD Monitoring in the Neural Simulator ANNarchy.</strong><br>
@@ -330,7 +359,7 @@ div.csl-indent {
 </section>
 <section id="parallel-performance" class="level2">
 <h2 class="anchored" data-anchor-id="parallel-performance">Parallel performance</h2>
-<p>Most importantly, ANNarchy is fast on multicore systems and GPUs. Depending on the model, it is comparable to Brian2 and faster than NEST on standard consumer PCs.</p>
+<p>Most importantly, ANNarchy is fast on shared memory systems utilizing multi-core CPUs and GPUs. Depending on the model, it is comparable to Brian2 and faster than NEST on standard consumer PCs.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/coba_4k_times.png" class="img-fluid figure-img" style="width:60.0%"></p>

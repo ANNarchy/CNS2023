@@ -291,6 +291,30 @@ div.csl-indent {
  <span class="menu-text">STDP</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/BoldMonitoring.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD monitoring</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/BoldModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/BoldSearch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fitting BOLD signals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/BoldParkinson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD monitoring using a basal ganglia model</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -389,10 +413,13 @@ div.csl-indent {
 </div>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">compile</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Compiling ...  OK </code></pre>
+</div>
 </div>
 <p>We add a monitor to track the membrane potential and the spike timings during the simulation.</p>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> Monitor(pop, [<span class="st">'v'</span>, <span class="st">'spike'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> Monitor(pop, [<span class="st">'v'</span>, <span class="st">'spike'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Following (Naud et al, 2008), we provide different parameter values corresponding to eight different firing patterns:</p>
 <ol type="1">
@@ -406,51 +433,51 @@ div.csl-indent {
 <li>irregular spiking.</li>
 </ol>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a) tonic spiking b) adaptation, c) initial burst, d) regular bursting, e) delayed accelerating, f) delayed regular bursting, g) transcient spiking, h) irregular spiking</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span>       [<span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">130</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">100</span>, <span class="dv">100</span>]</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>gL <span class="op">=</span>      [ <span class="dv">10</span>,  <span class="dv">12</span>,  <span class="dv">18</span>,  <span class="dv">10</span>,  <span class="dv">12</span>,  <span class="dv">12</span>,  <span class="dv">10</span>,  <span class="dv">12</span>]</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>E_L <span class="op">=</span>     [<span class="op">-</span><span class="dv">70</span>, <span class="op">-</span><span class="dv">70</span>, <span class="op">-</span><span class="dv">58</span>, <span class="op">-</span><span class="dv">58</span>, <span class="op">-</span><span class="dv">70</span>, <span class="op">-</span><span class="dv">70</span>, <span class="op">-</span><span class="dv">65</span>, <span class="op">-</span><span class="dv">60</span>]</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>v_T <span class="op">=</span>     [<span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>]</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>delta_T <span class="op">=</span> [  <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">2</span>]</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span>       [  <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">4</span>,   <span class="dv">2</span>,<span class="op">-</span><span class="fl">10.</span>, <span class="op">-</span><span class="fl">6.</span>,<span class="op">-</span><span class="fl">10.</span>,<span class="op">-</span><span class="fl">11.</span>]</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>tau_w <span class="op">=</span>   [ <span class="dv">30</span>, <span class="dv">300</span>, <span class="dv">150</span>, <span class="dv">120</span>, <span class="dv">300</span>, <span class="dv">300</span>,  <span class="dv">90</span>, <span class="dv">130</span>]</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span>       [  <span class="dv">0</span>,  <span class="dv">60</span>, <span class="dv">120</span>, <span class="dv">100</span>,   <span class="dv">0</span>,   <span class="dv">0</span>,  <span class="dv">30</span>,  <span class="dv">30</span>]</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>v_r <span class="op">=</span>     [<span class="op">-</span><span class="dv">58</span>, <span class="op">-</span><span class="dv">58</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">46</span>, <span class="op">-</span><span class="dv">58</span>, <span class="op">-</span><span class="dv">58</span>, <span class="op">-</span><span class="dv">47</span>, <span class="op">-</span><span class="dv">48</span>]</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span>       [<span class="dv">500</span>, <span class="dv">500</span>, <span class="dv">400</span>, <span class="dv">210</span>, <span class="dv">300</span>, <span class="dv">110</span>, <span class="dv">350</span>, <span class="dv">160</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a) tonic spiking b) adaptation, c) initial burst, d) regular bursting, e) delayed accelerating, f) delayed regular bursting, g) transcient spiking, h) irregular spiking</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span>       [<span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">130</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">100</span>, <span class="dv">100</span>]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>gL <span class="op">=</span>      [ <span class="dv">10</span>,  <span class="dv">12</span>,  <span class="dv">18</span>,  <span class="dv">10</span>,  <span class="dv">12</span>,  <span class="dv">12</span>,  <span class="dv">10</span>,  <span class="dv">12</span>]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>E_L <span class="op">=</span>     [<span class="op">-</span><span class="dv">70</span>, <span class="op">-</span><span class="dv">70</span>, <span class="op">-</span><span class="dv">58</span>, <span class="op">-</span><span class="dv">58</span>, <span class="op">-</span><span class="dv">70</span>, <span class="op">-</span><span class="dv">70</span>, <span class="op">-</span><span class="dv">65</span>, <span class="op">-</span><span class="dv">60</span>]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>v_T <span class="op">=</span>     [<span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>]</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>delta_T <span class="op">=</span> [  <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">2</span>]</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span>       [  <span class="dv">2</span>,   <span class="dv">2</span>,   <span class="dv">4</span>,   <span class="dv">2</span>,<span class="op">-</span><span class="fl">10.</span>, <span class="op">-</span><span class="fl">6.</span>,<span class="op">-</span><span class="fl">10.</span>,<span class="op">-</span><span class="fl">11.</span>]</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>tau_w <span class="op">=</span>   [ <span class="dv">30</span>, <span class="dv">300</span>, <span class="dv">150</span>, <span class="dv">120</span>, <span class="dv">300</span>, <span class="dv">300</span>,  <span class="dv">90</span>, <span class="dv">130</span>]</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span>       [  <span class="dv">0</span>,  <span class="dv">60</span>, <span class="dv">120</span>, <span class="dv">100</span>,   <span class="dv">0</span>,   <span class="dv">0</span>,  <span class="dv">30</span>,  <span class="dv">30</span>]</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>v_r <span class="op">=</span>     [<span class="op">-</span><span class="dv">58</span>, <span class="op">-</span><span class="dv">58</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">46</span>, <span class="op">-</span><span class="dv">58</span>, <span class="op">-</span><span class="dv">58</span>, <span class="op">-</span><span class="dv">47</span>, <span class="op">-</span><span class="dv">48</span>]</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span>       [<span class="dv">500</span>, <span class="dv">500</span>, <span class="dv">400</span>, <span class="dv">210</span>, <span class="dv">300</span>, <span class="dv">110</span>, <span class="dv">350</span>, <span class="dv">160</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In the <code>trial()</code> method, we simulate the network for 500 ms with a fixed input current, and remove that current for an additional 50 ms.</p>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trial(C, gL, E_L, v_T, delta_T, a, tau_w, b, v_r, I):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Reset neuron</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    reset()</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set parameters</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    pop.C <span class="op">=</span> C<span class="op">;</span> pop.gL <span class="op">=</span> gL<span class="op">;</span> pop.E_L <span class="op">=</span> E_L<span class="op">;</span> pop.v_T <span class="op">=</span> v_T<span class="op">;</span> pop.delta_T <span class="op">=</span> delta_T</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    pop.a <span class="op">=</span> a<span class="op">;</span> pop.tau_w <span class="op">=</span> tau_w<span class="op">;</span> pop.b <span class="op">=</span> b<span class="op">;</span> pop.v_r <span class="op">=</span> v_r<span class="op">;</span> pop.I <span class="op">=</span> I </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simulate</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    simulate(<span class="fl">500.</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    pop.I <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    simulate(<span class="fl">50.</span>)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Recordings</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> m.get(<span class="st">'v'</span>)</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    spikes <span class="op">=</span> m.get(<span class="st">'spike'</span>)</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n, t <span class="kw">in</span> spikes.items(): <span class="co"># Normalize the spikes</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        data[[x  <span class="cf">for</span> x <span class="kw">in</span> t], n] <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trial(C, gL, E_L, v_T, delta_T, a, tau_w, b, v_r, I):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Reset neuron</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    reset()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set parameters</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    pop.C <span class="op">=</span> C<span class="op">;</span> pop.gL <span class="op">=</span> gL<span class="op">;</span> pop.E_L <span class="op">=</span> E_L<span class="op">;</span> pop.v_T <span class="op">=</span> v_T<span class="op">;</span> pop.delta_T <span class="op">=</span> delta_T</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    pop.a <span class="op">=</span> a<span class="op">;</span> pop.tau_w <span class="op">=</span> tau_w<span class="op">;</span> pop.b <span class="op">=</span> b<span class="op">;</span> pop.v_r <span class="op">=</span> v_r<span class="op">;</span> pop.I <span class="op">=</span> I </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simulate</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    simulate(<span class="fl">500.</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    pop.I <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    simulate(<span class="fl">50.</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Recordings</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> m.get(<span class="st">'v'</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    spikes <span class="op">=</span> m.get(<span class="st">'spike'</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n, t <span class="kw">in</span> spikes.items(): <span class="co"># Normalize the spikes</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        data[[x  <span class="cf">for</span> x <span class="kw">in</span> t], n] <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now visualize the membrane potential for the different neuron types:</p>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> trial(C[idx], gL[idx], E_L[idx], v_T[idx], delta_T[idx], a[idx], tau_w[idx], b[idx], v_r[idx], I[idx])</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.plot(data[:, <span class="dv">0</span>])</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>plt.ylim((<span class="op">-</span><span class="fl">70.</span>, <span class="fl">5.</span>))</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> trial(C[idx], gL[idx], E_L[idx], v_T[idx], delta_T[idx], a[idx], tau_w[idx], b[idx], v_r[idx], I[idx])</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.plot(data[:, <span class="dv">0</span>])</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.ylim((<span class="op">-</span><span class="fl">70.</span>, <span class="fl">5.</span>))</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">

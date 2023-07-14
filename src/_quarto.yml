@@ -41,6 +41,10 @@ website:
         - notebooks/COBA.ipynb
         - notebooks/STP.ipynb
         - notebooks/STDP.ipynb
+        - notebooks/BoldMonitoring.ipynb
+        - notebooks/BoldModel.ipynb
+        - notebooks/BoldSearch.ipynb
+        - notebooks/BoldParkinson.ipynb
 
   page-footer:
     center: |

@@ -272,6 +272,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">STDP</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/BoldMonitoring.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD monitoring</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/BoldModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/BoldSearch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fitting BOLD signals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/BoldParkinson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BOLD monitoring using a basal ganglia model</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -388,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>Ci <span class="op">=</span> Projection(pre<span class="op">=</span>Pi, post<span class="op">=</span>P, target<span class="op">=</span><span class="st">'inh'</span>)</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>Ci.connect_fixed_probability(weights<span class="op">=</span>Wi, probability<span class="op">=</span>p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>&lt;ANNarchy.core.Projection.Projection at 0x11ec20250&gt;</code></pre>
+<pre><code>&lt;ANNarchy.core.Projection.Projection at 0x12f4da640&gt;</code></pre>
 </div>
 </div>
 <div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:false}" data-execution_count="7">
@@ -442,12 +466,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:false}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean firing rate in the population: '</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">len</span>(t) <span class="op">/</span> <span class="fl">4000.</span>) <span class="op">+</span> <span class="st">'Hz'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mean firing rate in the population: 10.02025Hz</code></pre>
+<pre><code>Mean firing rate in the population: 9.11175Hz</code></pre>
 </div>
 </div>
 <p>Finally, we can show the raster plot with pylab:</p>
 <div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:false}" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>plt.plot(t, n, <span class="st">'.'</span>, markersize<span class="op">=</span><span class="fl">1.0</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time (ms)'</span>)</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'# neuron'</span>)</span>
@@ -464,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rate <span class="op">=</span> m.population_rate(data, smooth<span class="op">=</span><span class="fl">1.0</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>plt.plot(rate)</span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time'</span>)</span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Population firing rate'</span>)</span>
