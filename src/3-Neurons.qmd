@@ -270,17 +270,21 @@ n = Monitor(proj, ['w'])
 After the simulation, you can retrieve the recordings with:
 
 ```python
-recorded_v = m.get('v')
+data = m.get()
 
-recorded_r = m.get('r')
-
-recorded_w = n.get('w')
+x = data['x']
+r = data['r']
 ```
 
-::: {.callout-warning}
-* Calling `get()` flushes the underlying arrays.
-* Recording projections at each time stepcan quickly fill up the RAM...
-:::
+or:
+
+```python
+x = m.get('x')
+r = m.get('r')
+```
+
+Calling `get()` flushes the underlying arrays. Beware, recording projections at each time step can quickly fill up the RAM...
+
 
 ::: {.callout-tip}
 # Notebook: Rate-coded neuron

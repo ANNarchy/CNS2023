@@ -98,18 +98,18 @@ LIF = Neuron(
 By default (**instantaneous transmission**), each incoming spike increments instantaneously `g_target` from the synaptic efficiency `w` of the corresponding synapse.
 
 $$
-    g(t) = \sum_{t_pre} w \times \delta(t - t_\text{pre})
+    g(t) = \sum_{t_\text{pre}} w \times \delta(t - t_\text{pre})
 $$
 
 
 For **exponentially-decreasing** or **alpha-shaped** synapses, ODEs have to be additionally introduced for the dynamics of the conductance/current when the neuron does not receive a spike.
 
 $$
-    \tau_\text{exc} \, \dfrac{d g(t)}{dt} + g(t) = 0 
+    \tau \, \dfrac{d g(t)}{dt} + g(t) = \sum_{t_\text{pre}} w \times \delta(t - t_\text{pre}) 
 $$
 
 $$
-    \tau_\text{exc} \, \dfrac{d \alpha(t)}{dt} + \alpha(t) = g(t)
+    \tau \, \dfrac{d \alpha(t)}{dt} + \alpha(t) = g(t)
 $$
 
 

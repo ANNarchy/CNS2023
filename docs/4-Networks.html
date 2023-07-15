@@ -384,14 +384,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>By default (<strong>instantaneous transmission</strong>), each incoming spike increments instantaneously <code>g_target</code> from the synaptic efficiency <code>w</code> of the corresponding synapse.</p>
 <p><span class="math display">
-    g(t) = \sum_{t_pre} w \times \delta(t - t_\text{pre})
+    g(t) = \sum_{t_\text{pre}} w \times \delta(t - t_\text{pre})
 </span></p>
 <p>For <strong>exponentially-decreasing</strong> or <strong>alpha-shaped</strong> synapses, ODEs have to be additionally introduced for the dynamics of the conductance/current when the neuron does not receive a spike.</p>
 <p><span class="math display">
-    \tau_\text{exc} \, \dfrac{d g(t)}{dt} + g(t) = 0
+    \tau \, \dfrac{d g(t)}{dt} + g(t) = \sum_{t_\text{pre}} w \times \delta(t - t_\text{pre})
 </span></p>
 <p><span class="math display">
-    \tau_\text{exc} \, \dfrac{d \alpha(t)}{dt} + \alpha(t) = g(t)
+    \tau \, \dfrac{d \alpha(t)}{dt} + \alpha(t) = g(t)
 </span></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
